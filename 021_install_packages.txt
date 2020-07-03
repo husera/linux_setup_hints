@@ -1,0 +1,52 @@
+###################################################################################################
+#    Setting Up my Kubuntu                                                                 Jun 2020
+###################################################################################################
+#!/bin/sh
+
+
+# Kvantum
+sudo apt install qt5-style-kvantum
+
+
+
+
+
+# Commandline tools
+    sudo apt install -y chkrootkit rar unrar p7zip-full mc htop sysstat iotop colordiff
+
+# Gui Tools - absolutly needed
+    # Synaptic
+    sudo apt install -y fonts-roboto plasma-applet-redshift-control kcalc
+        
+# KDE
+    sudo apt install -y kate yakuake krita 
+        
+# SystemTools
+    sudo apt install -y partitionmanager
+
+# Video & Audio & Graphics
+    # Codec 
+        sudo apt install -y libavcodec-extra ffmpeg lame kdenlive
+
+    # Player
+        sudo apt install -y vlc-plugin-vlsub dragonplayer
+
+# Internet
+    # SSH Server
+        sudo apt install -y ssh
+    # FTP SFTP Client
+        sudo apt install -y filezilla putty putty-doc     
+    # VPN
+        sudo apt install -y network-manager-vpnc network-manager-l2tp network-manager-openvpn network-manager-ssh
+   
+# Office
+    sudo apt install -y printer-driver-cups-pdf
+        
+# Security
+    sudo apt install -y keepassx        
+            
+# Java 9
+    # Runtime
+        ### sudo apt install openjdk-9-jre
+    # JDK
+        ### sudo apt install openjdk-9-jdk

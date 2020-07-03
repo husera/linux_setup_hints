@@ -1,0 +1,71 @@
+###################################################################################################
+#    Setting Up my Neon                                                                    Feb 2019
+###################################################################################################
+#!/bin/sh
+
+
+# Google Chrome
+###################################################################################################
+    cd  ~/Downloads/
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    sudo apt-get install -f
+    rm google-chrome-stable_current_amd64.deb
+
+
+# Dropbox
+###################################################################################################
+    ## Direct from Dropbox
+
+    https://www.dropbox.com/install
+
+    cd ~/Downloads/
+    sudo spkg -i dropbox_2019.01.31_amd64.deb
+    sudo apt install -f
+
+    dropbox start -i
+
+
+# JDownloader2
+###################################################################################################
+    # Prepare AppDir
+    sudo mkdir -p /opt/jdownloader
+    sudo chown -R alex:alex /opt/jdownloader
+
+    # Get installer
+    cd ~/Downloads/
+    wget http://installer.jdownloader.org/JD2Setup_x64.sh
+    chmod 755 JD2Setup_x64.sh 
+    ./JD2Setup_x64.sh 
+    
+    # GUI: During install select this InstallDir: /opt/jdownloader
+    
+
+# Skype ????????????????????????????????????????????????????
+###################################################################################################	
+    # https://www.skype.com/en/download-skype/skype-for-computer/
+    firefox https://go.skype.com/linux.deb
+    cd ~/Downloads/
+    sudo dpkg -i skypeforlinux-64.deb
+    sudo apt-get install -f
+    
+    # Solve NO_PUBKEY Error:
+    # Symtom - Simmilar error on apt update:
+    # W: GPG-Fehler: https://repo.skype.com/deb stable InRelease: Die folgenden Signaturen konnten nicht überprüft werden, weil ihr #öffentlicher Schlüssel nicht verfügbar ist: NO_PUBKEY 1F3045A5DF7587C3
+    ## sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <PUBKEY>
+    
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1F3045A5DF7587C3
+    
+    
+
+# Citrix Receiver  ????????????????????????????????????????????????????
+###################################################################################################
+    # Download: https://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
+    
+    firefox https://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
+
+    cd  ~/Downloads/
+    sudo dpkg -i icaclient_*_amd64.deb
+    sudo apt-get install -f
+
+    -> Configmgr /opt/Citrix/ICAClient/util/configmgr

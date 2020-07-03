@@ -1,0 +1,17 @@
+###################################################################################################
+#    Setting Up my Neon / Kubuntu                                                          Dec 2017
+###################################################################################################
+#!/bin/sh
+
+  
+# Visual Studio Code (Electron based)
+###################################################################################################
+#
+# https://code.visualstudio.com/
+#
+
+
+cd ~/Downloads
+wget -O vsc.deb https://go.microsoft.com/fwlink/?LinkID=760868
+sudo dpkg -i vsc.deb
+sudo apt install -f

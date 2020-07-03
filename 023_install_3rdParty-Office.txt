@@ -1,0 +1,29 @@
+###################################################################################################
+#    Setting Up my Neon                                                                    Aug 2018
+###################################################################################################
+#!/bin/sh
+
+
+##   KINGSOFT   ###################################################################################
+# http://wps-community.org/
+# http://wps-community.org/downloads
+    cd ~/Downloads/
+    wget -c http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office_10.1.0.6757_amd64.deb
+    sudo dpkg -i wps-office_10.1.0.6757_amd64.deb
+    sudo apt-get install -f
+    
+    
+# Error Correct ...
+    sudo sed -i.bak '/gApp/ s/{gOpt}/{gOpt} -style GTK+/' /usr/bin/et 
+    sudo sed -i.bak '/gApp/ s/{gOpt}/{gOpt} -style GTK+/' /usr/bin/wps 
+    sudo sed -i.bak '/gApp/ s/{gOpt}/{gOpt} -style GTK+/' /usr/bin/wpp
+
+    
+# Dict
+    wget http://wps-community.org/download/dicts/de_DE.zip && unzip de_DE.zip
+    wget http://wps-community.org/download/dicts/en_GB.zip && unzip en_GB.zip
+    wget http://wps-community.org/download/dicts/en_US.zip && unzip en_US.zip
+    sudo mv de_DE /opt/kingsoft/wps-office/office6/dicts/spellcheck
+    sudo mv en_GB /opt/kingsoft/wps-office/office6/dicts/spellcheck
+    sudo mv en_US /opt/kingsoft/wps-office/office6/dicts/spellcheck
+    sudo chown -R root:root /opt/kingsoft/wps-office/office6/dicts/spellcheck/*
