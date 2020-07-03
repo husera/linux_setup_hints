@@ -1,0 +1,39 @@
+###################################################################################################
+#    Setting Up my Neon / Kubuntu                                                          Dec 2017
+###################################################################################################
+#!/bin/sh
+
+### Icons & Cursor
+###################################################################################################
+            
+    # La Capitaine
+    
+      https://store.kde.org/p/1148695/
+      https://store.kde.org/p/1148692/
+
+        
+### Plasma Themes
+###################################################################################################
+
+    # QVantum Style Engine
+    # https://github.com/tsujan/Kvantum/releases
+    sudo add-apt-repository ppa:papirus/papirus
+    sudo apt-get install qt4-style-kvantum qt5-style-kvantum qt5-style-kvantum-l10n qt5-style-kvantum-themes   
+    
+    Style:
+    Mojave-dark  https://store.kde.org/p/1252328/
+    
+    Aurorae:
+    Mojave Dark Aurorae -- https://store.kde.org/p/1252329/
+    
+    Splashscreen:
+    Simple Tux splashscreen  -- https://store.kde.org/p/1258784/
+
+
+### Widgets
+###################################################################################################
+    
+    # Hide titlebars on maximized windows
+        # Hint:  Active Window Control Plasmoid:
+        # https://store.kde.org/p/998910
+

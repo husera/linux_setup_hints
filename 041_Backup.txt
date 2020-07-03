@@ -1,0 +1,23 @@
+#!/bin/sh
+# this is /etc/cron.hourly/99_alex_backup.sh
+
+if [ ! -d /media/alex/ALEX-BACKUP ]; then exit 0; fi;
+if [ ! -w /media/alex/ALEX-BACKUP ]; then exit 1; fi;
+
+DATE="/"`date "+%Y-%m-%d_%H:%M"`
+DEST="/media/alex/ALEX-BACKUP/`hostname`"
+mkdir -p ${DEST}${DATE}
+
+OBJ=/etc
+NAME=etc
+tar cjSf /tmp/${NAME}.tar.bz2 ${OBJ} >/dev/null 2>&1
+mv /tmp$OBJ.tar.bz2 $DEST$DATE/
+
+OBJ=/home/alex
+NAME=home_alex
+tar cjSf /tmp/$NAME.tar.bz2 \
+  --exclude='.cache' --exclude='.dropbox-dist' --exclude='Dropbox' \
+  --exclude='snap/spotify' --exclude='.config/google-chrome' \
+  --exclude='.mozilla' $OBJ >/dev/null 2>&1
+mv /tmp/$NAME.tar.bz2 $DEST$DATE/
+

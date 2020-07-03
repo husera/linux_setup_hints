@@ -1,0 +1,68 @@
+###################################################################################################
+#    Setting Up my Neon / Kubuntu                                                          Aug 2018
+###################################################################################################
+#!/bin/sh
+
+cat > ~/.bashrc << EOF
+
+# Apt-get
+alias install='sudo /usr/bin/apt install'
+alias remove='sudo /usr/bin/apt remove'
+alias autoremove='sudo /usr/bin/apt autoremove --purge'
+alias purge='sudo /usr/bin/apt purge'
+alias update='sudo /usr/bin/apt update -y && apt list --upgradable'
+alias upgrade='sudo /usr/bin/apt full-upgrade'
+alias dist-upgrade='sudo /usr/bin/apt dist-upgrade'
+alias search='/usr/bin/apt-cache search'
+alias clean='sudo /usr/bin/apt autoclean'
+alias xhost+='xhost +si:localuser:root'
+
+# systemctl
+alias shservices='sudo systemctl --type service'
+alias shtimers='sudo systemctl --type timer'
+
+# My IP
+alias ipe='curl ipinfo.io/ip'
+alias ipi='ip addr show scope global | grep inet'
+
+# Special Commands
+alias now='date +"%T"'
+alias nowdate='date +"%d.%m.%Y"'
+alias shmounts='mount | sort -k 3 | column -t'
+alias shpath='echo -e ${PATH//:/\\n}'
+alias shmem='free -hlmt'
+alias shcpu='lscpu'
+
+# Powerset
+alias power_show="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
+alias power_save="sudo cpupower frequency-set -g powersave"
+alias power_perf="sudo cpupower frequency-set -g performance"
+
+# Comand defaults
+alias df='df -Hl'
+alias diff='colordiff'
+alias h="history | cut -c 8-"
+alias inxi='inxi -Filnpswc32'
+alias ping='ping -c 5'
+alias wget='wget -c'
+
+# Radio
+alias 955='cvlc http://69.64.74.219:5571/'
+
+#Navigating the system
+alias ~='cd ~'
+alias doc='cd ~/Documents'
+alias down='cd ~/Downloads'
+alias desk='cd ~/Desktop'
+alias music='cd ~/Music'
+alias videos='cd ~/Videos'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ll='ls -las'
+
+# KDE
+alias kde='kstart5 plasmashell'
+
+EOF
+. ~/.bashrc

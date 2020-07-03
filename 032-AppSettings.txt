@@ -1,0 +1,32 @@
+###################################################################################################
+#    Setting Up my Neon / Kubuntu                                                          Dec 2017
+###################################################################################################
+#!/bin/sh
+
+
+###################################################################################################
+Chrome Extensions
+###################################################################################################
+see:  chrome://extensions/
+
+Adblock für Youtube
+I don't care about cookies
+Read Mode
+uBlock Origin
+Unsplash Instant
+WhatsChrome
+
+Chrome Flags:
+chrome://flags/#allow-insecure-localhost
+
+
+###################################################################################################
+Force Enable Hardware Acceleration in Firefox
+###################################################################################################
+see: https://askubuntu.com/questions/491750/force-enable-hardware-acceleration-in-firefox
+
+Open about:config in Firefox (url bar)
+Set layers.acceleration.force-enabled and layers.offmainthreadcomposition.enabled to true
+
+check:
+about:support / Graphics
