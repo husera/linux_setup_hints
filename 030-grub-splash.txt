@@ -1,0 +1,24 @@
+###################################################################################################
+#    Setting Up my Neon / Kubuntu                                                          Dec 2017
+###################################################################################################
+#!/bin/sh
+
+# Grub Splash Image
+    sudo vi /etc/default/grub
+    GRUB_GFXMODE=auto
+    # change: GRUB_GFXMODE=1280x800
+    # change: GRUB_GFXMODE=1366x768
+    # change: GRUB_GFXMODE=1920x1080
+
+    echo "GRUB_GFXMODE=1920x1080" | sudo tee -a /etc/default/grub
+	
+	# Not for Kubuntu:
+    echo "GRUB_THEME=\"/boot/grub/themes/breeze/theme.txt\"" | sudo tee -a /etc/default/grub
+    
+    change in /etc/default/grub
+        GRUB_HIDDEN_TIMEOUT_QUIET=false
+        GRUB_TIMEOUT=5
+
+
+    sudo update-grub
+    sudo update-initramfs -u

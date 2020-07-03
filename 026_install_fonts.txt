@@ -1,0 +1,104 @@
+###################################################################################################
+#    Setting Up my Neon / Kubuntu                                                          Feb 2019
+###################################################################################################
+#!/bin/sh
+
+# Microsoft Office Compatible fonts
+    sudo apt install ttf-mscorefonts-installer
+
+# From my Dropbox
+
+    cd ~/Dropbox/System_Settings/
+    mkdir -p /tmp/fnt/ && cp FontShop.rar /tmp/fnt/
+    cd /tmp/fnt/ && unrar x FontShop.rar && rm FontShop.rar
+
+    sudo mkdir -p /usr/share/fonts/truetype/alex
+
+    sudo mv FontShop/Classic/Rotis_1988-OltAicher/RotisS* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Classic/Palatino_1950-HermannZapf/PalatinoLTStd-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Classic/Myriad_1992-CarolTwombly_RobertSlimbach/MyriadPro-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Classic/Lucida_1985-ChrisHolmes_Charles\ Bigelow/Lucida* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Classic/Helvetica_1957-MaxMiedinger/HelveticaNeueLTStd-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Classic/Futura_1927-Paul\ Renner/FuturaStd-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Classic/Baskerville_1754-JohnBaskerville/BaskervilleMTStd-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Classic/AkzidenzGrotesk_1966-GünterGerhardLange/AkzidenzGrotesk-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Google/Merriweather/Merriweather-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Google/Merriweather_Sans/MerriweatherSans-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Google/Roboto_Mono/RobotoMono-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Google/Source-Sans-Pro/SourceSansPro-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Google/Source-Serif-Pro/SourceSerifPro-* /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Microsoft/symbol.ttf /usr/share/fonts/truetype/alex
+    sudo mv FontShop/Microsoft/Wingdings* /usr/share/fonts/truetype/alex
+
+
+    sudo rm -r FontShop
+    sudo fc-cache -fv
+    
+###################################################################################################
+Clean Fonts
+###################################################################################################
+
+    # Check
+    fc-list | grep -i Noto
+
+    fc-list | grep Noto.*Adlam | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Arabic | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Armenian | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Avestan | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Bamum | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Bengali | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Buhid | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Carian | cut -f1 -d":" | xargs sudo rm    
+    fc-list | grep Noto.*Chakma | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Cham | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Cherokee | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Cypriot | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Deseret | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Devanagari | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Ethiopic | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Georgian | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Glagolitic | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Gothic | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Gujarati | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Gurmukhi | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Hebrew | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Kannada | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Kayah.Li | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Khmer | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Kufi | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Lao | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Lisu | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Malayalam | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Mandaic | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Myanmar | cut -f1 -d":" | xargs sudo rm    
+    fc-list | grep Noto.*NKo | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Naskh | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Ol.Chiki | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Old.Turkic | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Oriya | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Osage | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Osmanya | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Sans.Vai | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Shavian | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Sinhala | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Tamil | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Telugu | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Thaana | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Thai | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Tibetan | cut -f1 -d":" | xargs sudo rm
+    fc-list | grep Noto.*Tifinagh | cut -f1 -d":" | xargs sudo rm
+    
+    sudo fc-cache -fv
+    
+    
+    
+
+    
+
+
+    
+    
+    
+    
+    
+    
