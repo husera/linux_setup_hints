@@ -1,0 +1,10 @@
+###################################################################################################
+#    Setting Up my Neon / Kubuntu                                                          Dec 2017
+###################################################################################################
+#!/bin/sh
+
+
+sudo apt install bcmwl-kernel-source
+
+# https://github.com/0xbb/gpu-switch/blob/master/gpu-switch
+sudo gpu-switch -i

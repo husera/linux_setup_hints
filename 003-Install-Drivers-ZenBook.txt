@@ -1,0 +1,35 @@
+﻿###################################################################################################
+#    Setting Up my Kubuntu                                                                 May 2020
+###################################################################################################
+#!/bin/sh
+
+
+	### Ubuntu on Asus Zenbook 3 UX390
+	# To resolve the sound issue do the following:
+	
+    sudo cp /usr/share/pulseaudio/alsa-mixer/paths/analog-output.conf.common /usr/share/pulseaudio/alsa-mixer/paths/analog-output.conf.common.orig
+    sudo vi /usr/share/pulseaudio/alsa-mixer/paths/analog-output.conf.common
+
+	# Change:
+	## From
+		[Element PCM]
+		switch = mute
+		volume = merge
+		override-map.1 = all
+		override-map.2 = all-left,all-right
+		
+	## To this:
+
+	[Element Master]
+	switch = mute
+	volume = ignore
+
+	[Element PCM]
+	switch = mute
+	volume = merge
+	override-map.1 = all
+	override-map.2 = all-left,all-right
+
+	[Element LFE]
+	switch = mute
+	volume = ignore

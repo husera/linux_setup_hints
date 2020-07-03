@@ -1,0 +1,25 @@
+###################################################################################################
+#    Setting Up my Kubuntu                                                                 May 2020
+###################################################################################################
+#!/bin/sh
+
+cat > ~/alexander << EOF
+
+# Members of the admin group may gain root privileges
+%adm    ALL=(ALL) ALL
+
+# Allow members of group sudo to execute some command
+%sudo   ALL=(ALL:ALL) ALL
+%sudo   ALL=NOPASSWD: /usr/bin/apt update
+%sudo   ALL=NOPASSWD: /usr/bin/apt update -y
+%sudo   ALL=NOPASSWD: /usr/bin/apt upgrade
+%sudo   ALL=NOPASSWD: /usr/bin/apt autoremove
+%sudo   ALL=NOPASSWD: /usr/bin/apt autoremove --purge
+%sudo   ALL=NOPASSWD: /usr/bin/apt list --upgradable
+%sudo   ALL=NOPASSWD: /bin/systemctl --type service
+%sudo   ALL=NOPASSWD: /bin/systemctl --type timer
+EOF
+
+sudo chmod 0440  ~/alexander
+sudo chown root:root  ~/alexander
+sudo mv ~/alexander /etc/sudoers.d/alexander

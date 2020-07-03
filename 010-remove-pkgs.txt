@@ -1,0 +1,23 @@
+﻿###################################################################################################
+#    Setting Up Kubuntu                                                                    Mai 2020
+###################################################################################################
+#!/bin/sh
+    
+### Helper : Synaptic
+    sudo apt -y install muon
+
+# Remove Packages i do not need 
+    sudo apt purge apport apport-kde apport-symptoms
+
+# System Tools
+    # Base
+    sudo apt purge -y nano
+      
+# Desktop	
+    # Devel
+        sudo apt purge -y libc6-dbg
+
+    # Fonts
+        sudo apt purge -y fonts-noto-unhinted fonts-noto-cjk
+
+

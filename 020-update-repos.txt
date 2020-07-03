@@ -1,0 +1,19 @@
+###################################################################################################
+#    Setting Up my Neon                                                                    Feb 2019
+###################################################################################################
+#!/bin/sh
+
+# Install updates
+###################################################################################################
+
+# Update 
+    sudo apt update && apt list --upgradable
+    sudo apt -y upgrade
+    sudo apt -y dist-upgrade
+
+# Remove unused pkgs
+    sudo apt -y autoremove
+    sudo apt -y clean
+
+# reboot and test new kernel (if any)
+    sudo reboot
