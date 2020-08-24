@@ -19,5 +19,3 @@
 
     # Fonts
         sudo apt purge -y fonts-noto-unhinted fonts-noto-cjk
-
-
