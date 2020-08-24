@@ -3,13 +3,8 @@
 ###################################################################################################
 #!/bin/sh
 
-
 # Kvantum
 sudo apt install qt5-style-kvantum
-
-
-
-
 
 # Commandline tools
     sudo apt install -y chkrootkit rar unrar p7zip-full mc htop sysstat iotop colordiff
