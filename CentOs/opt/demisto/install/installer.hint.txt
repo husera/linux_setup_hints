@@ -4,7 +4,38 @@ sudo ./demistoserver-5.5-78518.sh -- -tools=false -multi-tenant
 ### To uninstall use:
 sudo ./demistoserver-5.5-78518.sh -- -multi-tenant -purge
 
-### Additional docker images
+### Additional docker images for V 5.5
 docker pull demisto/powershell:7.0.1.9103
 docker pull demisto/stix
 docker pull demisto/python3-deb:3.8.5.10844
+
+### Preload most common docker images
+# note: this is for Content Release 20.6.1 trough 20.8.2
+# See output of the install content pack function:
+docker pull demisto/chromium:1.0.0.9637
+docker pull demisto/chromium:1.0.0.9967
+ 
+docker pull demisto/crypto:1.0.0.8854
+docker pull demisto/crypto:1.0.0.7634
+docker pull demisto/crypto:1.0.0.303
+docker pull demisto/ldap:1.0.0.75
+docker pull demisto/pymisp:1.0.0.52
+docker pull demisto/py-ews:2.0
+docker pull demisto/pyjwt3:1.0.0.4946
+docker pull demisto/python:1.3-alpine
+docker pull demisto/python3
+docker pull demisto/python3:3.8.5.10455
+docker pull demisto/python3:3.8.3.9324
+docker pull demisto/python3:3.8.3.8715
+docker pull demisto/python3:3.8.2.6981
+docker pull demisto/python3:3.7.5.4583
+docker pull demisto/python3:3.7.5.3066
+docker pull demisto/python3:3.7.3.286
+docker pull demisto/python3:3.7.3.221
+ 
+docker pull demisto/rasterize
+ 
+docker pull demisto/splunksdk:1.0
+docker pull demisto/tesseract:1.0.0.9482
+ 
+docker pull demisto/tld
