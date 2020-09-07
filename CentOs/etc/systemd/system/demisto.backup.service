@@ -1,0 +1,8 @@
+[Unit]
+# Dont forget to "sudo systemctl daemon-reload" after changing a service file
+Description="A script to backup all demisto data."
+
+[Service]
+ExecStart=/opt/demisto/scripts/backup.sh
+User=demisto
+Group=demisto
