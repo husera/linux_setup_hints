@@ -3,5 +3,4 @@ May not work as intended - use at your own risk
 
 https://www.git-tower.com/blog/git-cheat-sheet-de
 
-check /etc/security/limits.conf
-check SE Linux https://wiki.centos.org/HowTos/SELinux 
+check SE Linux https://wiki.centos.org/HowTos/SELinux
