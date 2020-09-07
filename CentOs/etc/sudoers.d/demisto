@@ -1,77 +1,44 @@
-# Sudoers file for the DEMISTO user for Test- and Development servers
+# All commands for demisto - please also see /etc/sudoers.d/docker
+# # Allow admins to su to the demisto user
+%wheel ALL = NOPASSWD: /usr/bin/su - demisto, /bin/su demisto
 #
 ### Do not require a tty for demisto -> we will always sudo to this account
 Defaults:demisto !requiretty
+# #
+# # Working directory of demisto
+demisto ALL = NOPASSWD:/usr/bin/mkdir -p /opt/demisto
+demisto ALL = NOPASSWD:/usr/bin/mkdir -p /opt/demisto/install
+demisto ALL = NOPASSWD:/usr/bin/chown -R demisto\:demisto /opt/demisto
 #
-### Allow Admin users (nobody else will have the login right) to become the demisto user
-ALL ALL     = NOPASSWD: /bin/su - demisto, /bin/su demisto
-ALL ALL     = /usr/sbin/reboot
+# # Starting the installer
+demisto ALL = NOPASSWD:/usr/bin/more /etc/sudoers.d/demisto
 #
-### Server package management
-ALL ALL     = /bin/yum install *
-ALL ALL     = /bin/yum reinstall *
-ALL ALL     = /bin/yum erase *
-ALL ALL     = /bin/yum update *
-ALL ALL     = /bin/yum update
-ALL ALL     = /bin/yum upgrade *
+# # Server Management
+demisto ALL = NOPASSWD:/usr/sbin/setcap cap_net_bind_service=+eip /usr/local/demisto/server
+demisto ALL = NOPASSWD:/usr/bin/vim /etc/demisto.conf
+demisto ALL = NOPASSWD:/usr/bin/systemctl * demisto
+demisto ALL = NOPASSWD:/usr/bin/systemctl * demisto.backup
+demisto ALL = NOPASSWD:/usr/bin/systemctl * demisto.backup.timer
+demisto ALL = NOPASSWD:/usr/bin/journalctl -u demisto *
+demisto ALL = NOPASSWD:/usr/bin/journalctl -u demisto.backup *
+demisto ALL = NOPASSWD:/usr/bin/journalctl -u demisto.backup.timer *
+demisto ALL = NOPASSWD:/usr/sbin/reboot
 #
-### Allow changes only on test/dev server -> Changes needs to be packed into the helper package
-ALL ALL     = /usr/sbin/visudo -f /etc/sudoers.d/demisto
-#
-### Create the Demistp RPM package as root because there are files only accessible by root
-demisto ALL = NOPASSWD:/bin/rpmbuild -bb /opt/demisto/templates/demisto.helper.spec
-#
-#
-### Working directory of demisto (The directory will be created by the helper package)
-demisto ALL = NOPASSWD:/bin/chown -R demisto\:demisto /opt/demisto
-#
-# Starting the installer
-demisto ALL = NOPASSWD:/opt/demisto/install/demisto*sh *
-#
-# Server Management
-demisto ALL = NOPASSWD:/bin/vim /etc/demisto.conf
-demisto ALL = NOPASSWD:/bin/systemctl enable demisto
-demisto ALL = NOPASSWD:/bin/systemctl disable demisto
-demisto ALL = NOPASSWD:/bin/systemctl start demisto
-demisto ALL = NOPASSWD:/bin/systemctl stop demisto
-demisto ALL = NOPASSWD:/bin/systemctl status demisto
-demisto ALL = NOPASSWD:/bin/systemctl reload demisto
-demisto ALL = NOPASSWD:/bin/systemctl restart demisto
-demisto ALL = NOPASSWD:/bin/systemctl kill demisto
-demisto ALL = NOPASSWD:/bin/systemctl start demisto.backup
-demisto ALL = NOPASSWD:/bin/systemctl start demisto.backup.timer
-demisto ALL = NOPASSWD:/bin/systemctl enable demisto.backup.timer
-demisto ALL = NOPASSWD:/bin/systemctl disable demisto.backup.timer
-demisto ALL = NOPASSWD:/bin/systemctl start demisto.DR.timer
-demisto ALL = NOPASSWD:/bin/systemctl stop demisto.DR.timer
-demisto ALL = NOPASSWD:/bin/journalctl -u demisto *
-demisto ALL = NOPASSWD:/bin/journalctl -u demisto.backup *
-demisto ALL = NOPASSWD:/bin/journalctl -u demisto.backup.timer *
-demisto ALL = NOPASSWD:/bin/journalctl -u demisto.DR.timer *
-#
-### Docker
-demisto ALL = NOPASSWD:/bin/docker *
-demisto ALL = NOPASSWD:/bin/systemctl start docker
-demisto ALL = NOPASSWD:/bin/systemctl stop docker
-demisto ALL = NOPASSWD:/bin/journalctl -u docker *
-#
-# Service Management
-demisto ALL = NOPASSWD:/bin/systemctl daemon-reload
-demisto ALL = NOPASSWD:/bin/systemd-analyze verify /etc/systemd/system/demisto*
-demisto ALL = NOPASSWD:/bin/vim /etc/systemd/system/demisto.service
-demisto ALL = NOPASSWD:/bin/vim /etc/systemd/system/demisto.backup.service
+# # Docker
+demisto ALL = NOPASSWD:/usr/bin/docker *
+demisto ALL = NOPASSWD:/usr/bin/systemctl * docker
+demisto ALL = NOPASSWD:/usr/bin/journalctl -u docker *
 #
 # # Volume management
-demisto ALL = NOPASSWD:/bin/df *
-demisto ALL = NOPASSWD:/bin/du *
+demisto ALL = NOPASSWD:/usr/bin/df *
+demisto ALL = NOPASSWD:/usr/bin/du *
 #
-# #Account Management - allos demisto to add users to their group - used to give splunk access to the logs
+# #Account Management - allwos demisto to add users to their group - used to give splunk access to the logs
 demisto ALL = NOPASSWD:/usr/sbin/usermod -a -G demisto *
 #
 # Troubleshooting
 demisto ALL = NOPASSWD:/usr/sbin/lsof *
-demisto ALL = NOPASSWD:/usr/bin/strace *
-demisto ALL = NOPASSWD:/usr/bin/ltrace *
-demisto ALL = NOPASSWD:/usr/sbin/autrace *
-demisto ALL = NOPASSWD:/bin/rpm -Vv *
-demisto ALL = NOPASSWD:/usr/sbin/iptables *
+#
+# Demisto helper Package
+demisto ALL = NOPASSWD:/usr/bin/rpmbuild -bb /opt/demisto/templates/msoar.helper.spec
+demisto ALL = NOPASSWD:/usr/bin/rpm -Vv *
