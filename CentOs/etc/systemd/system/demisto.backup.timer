@@ -1,0 +1,10 @@
+[Unit]
+# Dont forget to "sudo systemctl daemon-reload" after changing a service file
+Description="TIMER: A script to backup all demisto data"
+
+[Timer]
+OnCalendar=hourly
+Unit=demisto.backup.service
+
+[Install]
+WantedBy=multi-user.target
