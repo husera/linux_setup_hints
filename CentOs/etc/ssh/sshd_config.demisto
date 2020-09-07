@@ -1,0 +1,92 @@
+#	$OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Ciphers and keying
+#RekeyLimit default none
+
+# Logging
+SyslogFacility AUTHPRIV
+LogLevel INFO
+
+# Authentication:
+LoginGraceTime 1m
+PermitRootLogin no
+StrictModes yes
+MaxAuthTries 4
+#MaxSessions 10
+#PubkeyAuthentication yes
+
+# User config
+DenyUsers bin,daemon,adm,lp,sync,mail,operator,games,ftp,nobody,dbus,tss,polkitd,rngd
+AuthorizedKeysFile	.ssh/authorized_keys
+#AuthorizedPrincipalsFile none
+#AuthorizedKeysCommand none
+#AuthorizedKeysCommandUser nobody
+IgnoreRhosts yes
+PermitEmptyPasswords no
+PasswordAuthentication yes
+ChallengeResponseAuthentication yes
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KerberosGetAFSToken no
+#KerberosUseKuserok yes
+
+# GSSAPI options
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+#GSSAPIStrictAcceptorCheck yes
+#GSSAPIKeyExchange no
+#GSSAPIEnablek5users no
+
+# Use PAM
+UsePAM yes
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+X11Forwarding yes
+#X11DisplayOffset 10
+X11UseLocalhost yes
+#PermitTTY yes
+
+# It is recommended to use pam_motd in /etc/pam.d/sshd instead of PrintMotd,
+# as it is more configurable and versatile than the built-in version.
+PrintMotd no
+PrintLastLog no
+TCPKeepAlive yes
+PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+UseDNS no
+#PidFile /var/run/sshd.pid
+MaxStartups 10:30:100
+PermitTunnel yes
+#ChrootDirectory none
+#VersionAddendum none
+
+# no default banner path
+Banner /etc/issue.net
+
+# Accept locale-related environment variables
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+
+# override default of no subsystems
+Subsystem	sftp	/usr/libexec/openssh/sftp-server
