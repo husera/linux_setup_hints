@@ -1,0 +1,10 @@
+### To install use:
+sudo ./demistoserver-5.5-78518.sh -- -tools=false -multi-tenant
+
+### To uninstall use:
+sudo ./demistoserver-5.5-78518.sh -- -multi-tenant -purge
+
+### Additional docker images
+docker pull demisto/powershell:7.0.1.9103
+docker pull demisto/stix
+docker pull demisto/python3-deb:3.8.5.10844
