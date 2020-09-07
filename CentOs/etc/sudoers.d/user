@@ -1,0 +1,50 @@
+# Operating commands
+%wheel  ALL = NOPASSWD: /usr/bin/kill
+%wheel  ALL = NOPASSWD: /usr/bin/tail
+%wheel  ALL = NOPASSWD: /usr/bin/cat
+%wheel  ALL = NOPASSWD: /usr/bin/grep
+%wheel  ALL = NOPASSWD: /usr/bin/mv
+%wheel  ALL = NOPASSWD: /usr/bin/cp
+%wheel  ALL = NOPASSWD: /usr/bin/chown
+%wheel  ALL = NOPASSWD: /usr/bin/chmod
+%wheel  ALL = NOPASSWD: /usr/bin/ls
+%wheel  ALL = NOPASSWD: /usr/bin/ls
+
+# Admin CMD
+%wheel  ALL = NOPASSWD: /usr/bin/systemctl stop *
+%wheel  ALL = NOPASSWD: /usr/bin/systemctl start *
+%wheel  ALL = NOPASSWD: /usr/bin/systemctl restart *
+%wheel  ALL = NOPASSWD: /usr/bin/systemctl status *
+%wheel  ALL = NOPASSWD: /sbin/shutdown -r now
+%wheel  ALL = NOPASSWD: /sbin/shutdown -h now
+
+# Install / Remove
+%wheel  ALL = NOPASSWD: /usr/bin/yum install *
+%wheel  ALL = NOPASSWD: /usr/bin/yum update *
+%wheel  ALL = NOPASSWD: /usr/bin/yum remove *
+%wheel  ALL = NOPASSWD: /usr/bin/yum info *
+%wheel  ALL = NOPASSWD: /usr/bin/dnf install *
+%wheel  ALL = NOPASSWD: /usr/bin/dnf remove *
+%wheel  ALL = NOPASSWD: /usr/bin/dnf upgrade *
+%wheel  ALL = NOPASSWD: /usr/bin/dnf config-manager upgrade *
+
+# User rights
+%wheel ALL = /usr/sbin/visudo -f /etc/sudoers.d/demisto
+%wheel ALL = /usr/sbin/visudo -f /etc/sudoers.d/user
+
+# NetWorking
+%wheel  ALL = NOPASSWD: NOEXEC: /usr/bin/nmcli
+
+# DEFAULTNOEXECCMD
+%wheel  ALL = NOPASSWD: NOEXEC: /usr/bin/find
+%wheel  ALL = NOPASSWD: NOEXEC: /usr/bin/more
+%wheel  ALL = NOPASSWD: NOEXEC: /usr/bin/less
+%wheel  ALL = NOPASSWD: NOEXEC: /usr/bin/vim
+%wheel  ALL = NOPASSWD: NOEXEC: /usr/bin/rpmbuild
+
+# Allow to su to demisto user
+%wheel     ALL = NOPASSWD: /usr/bin/su - demisto
+
+# Troubleshooting
+%wheel  ALL = NOPASSWD: NOEXEC: /usr/bin/lsof
+%wheel  ALL = NOPASSWD: NOEXEC: /usr/bin/firewall-cmd
