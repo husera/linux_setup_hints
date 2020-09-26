@@ -1,17 +1,13 @@
-﻿###################################################################################################
-#    Setting Up my Kubuntu                                                                 May 2020
 ###################################################################################################
-#!/bin/sh
+#    Setting Up my Kubuntu                                                                Sept 2020
+###################################################################################################
 
-### virtual BOX Guest Additions
-###################################################################################################
-    sudo apt-get install virtualbox-guest-dkms virtualbox-guest-x11 virtualbox-guest-utils
-    sudo reboot
+# detect VM-Guest is running on which hypervisor
+sudo dmidecode -s system-manufacturer
 
 ### VmWare Tools
 ###################################################################################################
     sudo apt install open-vm-tools-desktop 
-
 
 ### virtual BOX Guest Additions (alternative)
 ###################################################################################################
@@ -28,18 +24,16 @@
     sudo usermod -a -G vboxusers $USER
 
     # Nur beim Error:
-    # SMBus base address uninitialized - upgrade bios or use force_addr=0xaddr
+        # SMBus base address uninitialized - upgrade bios or use force_addr=0xaddr
 
-        #This error is caused by VM having no smbus but Ubuntu always trying to load the module.
-        #It doesn't affect anything but is a bit annoying.
+            #This error is caused by VM having no smbus but Ubuntu always trying to load the module.
+            #It doesn't affect anything but is a bit annoying.
 
-    # check
+        # check
+        sudo vi /etc/modprobe.d/blacklist.conf
 
+        # adding the following to the end of the file:
+        blacklist i2c_piix4
 
-    sudo vi /etc/modprobe.d/blacklist.conf
-
-    # adding the following to the end of the file:
-    blacklist i2c_piix4
-
-    # Update the initramfs
-    sudo update-initramfs -u -k all
+        # Update the initramfs
+        sudo update-initramfs -u -k all
