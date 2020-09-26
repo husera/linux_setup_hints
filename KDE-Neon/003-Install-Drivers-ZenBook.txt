@@ -1,11 +1,9 @@
-﻿###################################################################################################
-#    Setting Up my Kubuntu                                                                 May 2020
 ###################################################################################################
-#!/bin/sh
+#    Setting Up my Kubuntu                                                                Sept 2020
+###################################################################################################
 
-
-	### Ubuntu on Asus Zenbook 3 UX390
-	# To resolve the sound issue do the following:
+### Ubuntu on Asus Zenbook 3 UX390
+# To resolve the sound issue do the following:
 	
     sudo cp /usr/share/pulseaudio/alsa-mixer/paths/analog-output.conf.common /usr/share/pulseaudio/alsa-mixer/paths/analog-output.conf.common.orig
     sudo vi /usr/share/pulseaudio/alsa-mixer/paths/analog-output.conf.common
