@@ -5,4 +5,4 @@ https://www.git-tower.com/blog/git-cheat-sheet-de
 
 check SE Linux https://wiki.centos.org/HowTos/SELinux
 
-ui.version.control.show.remote
+ui.version.control.show.remote && selective.propagation.enabled
