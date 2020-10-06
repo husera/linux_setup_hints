@@ -11,7 +11,7 @@ demisto ALL = NOPASSWD:/usr/bin/mkdir -p /opt/demisto/install
 demisto ALL = NOPASSWD:/usr/bin/chown -R demisto\:demisto /opt/demisto
 #
 # # Starting the installer
-demisto ALL = NOPASSWD:/usr/bin/more /etc/sudoers.d/demisto
+demisto ALL = NOPASSWD:/opt/demisto/install/demisto*sh *
 #
 # # Server Management
 demisto ALL = NOPASSWD:/usr/sbin/setcap cap_net_bind_service=+eip /usr/local/demisto/server
