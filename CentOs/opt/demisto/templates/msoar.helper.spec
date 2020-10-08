@@ -3,7 +3,7 @@ Version:        1.0
 Release:        4
 Summary:        Helper Package for demisto with all dependencies and files provided by SIX
 
-Group:          Six Platform-engineers
+Group:          Platform-engineers
 BuildArch:      x86_64
 License:        Proprietary. Based on a contract.
 
