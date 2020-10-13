@@ -9,7 +9,7 @@ License:        Proprietary. Based on a contract.
 
 #BuildRequires:
 Requires(pre):  shadow-utils, /usr/sbin/useradd, /usr/sbin/groupadd, /usr/bin/getent, /usr/bin/chage
-Requires:       rpm-build samba samba-client samba-common-tools libcap file-devel fontconfig expat libpng freetype lsof
+Requires:       rpm-build samba samba-client samba-common-tools libcap file-devel fontconfig expat libpng freetype lsof cloud-utils-growpart gdisk
 
 %description
 Helper Package for Cortex XSOAR with all dependencies and files provided by SIX.
