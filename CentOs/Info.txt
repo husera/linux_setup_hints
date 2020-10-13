@@ -2,7 +2,8 @@ Work in Progress
 May not work as intended - use at your own risk
 
 https://www.git-tower.com/blog/git-cheat-sheet-de
-
 check SE Linux https://wiki.centos.org/HowTos/SELinux
+https://computingforgeeks.com/resize-ext-and-xfs-root-partition-without-lvm/
 
+Note to the Demisto settings:
 ui.version.control.show.remote && selective.propagation.enabled
