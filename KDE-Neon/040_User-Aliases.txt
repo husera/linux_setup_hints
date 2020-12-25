@@ -46,9 +46,6 @@ alias inxi='inxi -Filnpswc32'
 alias ping='ping -c 5'
 alias wget='wget -c'
 
-# Radio
-alias 955='cvlc http://69.64.74.219:5571/'
-
 #Navigating the system
 alias ~='cd ~'
 alias doc='cd ~/Documents'
