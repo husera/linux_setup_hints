@@ -19,12 +19,10 @@
 ## Installing the HWE stack is simple:
 
 ## DESKTOP
-#    sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
-#    # Laptops with touchpad:
-#    sudo apt-get install xserver-xorg-input-synaptics-dev-hwe-18.04 
+#    sudo apt-get install --install-recommends linux-generic-hwe-20.04
 
-# SERVER
-#    sudo apt-get install --install-recommends linux-generic-hwe-18.04 
+## Check
+#   hwe-support-status --verbose
 
 
 # nur LapTops
