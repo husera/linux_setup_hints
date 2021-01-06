@@ -13,6 +13,7 @@ cat > ~/alexander << EOF
 %sudo   ALL=NOPASSWD: /usr/bin/apt update
 %sudo   ALL=NOPASSWD: /usr/bin/apt update -y
 %sudo   ALL=NOPASSWD: /usr/bin/apt upgrade
+%sudo   ALL=NOPASSWD: /usr/bin/apt full-upgrade
 %sudo   ALL=NOPASSWD: /usr/bin/apt autoremove
 %sudo   ALL=NOPASSWD: /usr/bin/apt autoremove --purge
 %sudo   ALL=NOPASSWD: /usr/bin/apt list --upgradable
