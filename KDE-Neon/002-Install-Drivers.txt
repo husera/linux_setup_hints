@@ -11,20 +11,6 @@
     # Infos about GPU:
     sudo lshw -class display
     
-    
-# HWE Kernel
-###################################################################################################
-## https://wiki.ubuntu.com/Kernel/LTSEnablementStack
-
-## Installing the HWE stack is simple:
-
-## DESKTOP
-#    sudo apt-get install --install-recommends linux-generic-hwe-20.04
-
-## Check
-#   hwe-support-status --verbose
-
-
 # nur LapTops
 ###################################################################################################
 # You can use TLP, a tool that you install and then forget about it because it automatically tweaks
