@@ -1,5 +1,5 @@
 ###################################################################################################
-#    Setting Up my Neon                                                                    Feb 2019
+#    Setting Up my Ubuntu                                                                  Jan 2021
 ###################################################################################################
 #!/bin/sh
 
@@ -8,8 +8,7 @@
 
 # Update 
     sudo apt update && apt list --upgradable
-    sudo apt -y upgrade
-    sudo apt -y dist-upgrade
+    sudo apt -y full-upgrade
 
 # Remove unused pkgs
     sudo apt -y autoremove
