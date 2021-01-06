@@ -1,5 +1,5 @@
 ###################################################################################################
-#    Setting Up my Neon / Kubuntu                                                          Dec 2017
+#    Setting Up my Ubuntu                                                                  Jan 2021
 ###################################################################################################
 #!/bin/sh
 
@@ -12,13 +12,15 @@
 
     echo "GRUB_GFXMODE=1920x1080" | sudo tee -a /etc/default/grub
 	
-	# Not for Kubuntu:
-    echo "GRUB_THEME=\"/boot/grub/themes/breeze/theme.txt\"" | sudo tee -a /etc/default/grub
+---	
+	
+#Theme
+    # get theme from:  https://www.gnome-look.org/p/1414997/
+    cd ~/Downloads/
+    tar xf Sleek\ theme-white.tar.xz
+    sudo mkdir -p /boot/grub/themes
+    sudo mv Sleek\ theme-white/sleek /boot/grub/themes/
+    echo "GRUB_THEME=/boot/grub/themes/sleek/theme.txt" | sudo tee -a /etc/default/grub
     
-    change in /etc/default/grub
-        GRUB_HIDDEN_TIMEOUT_QUIET=false
-        GRUB_TIMEOUT=5
-
-
     sudo update-grub
     sudo update-initramfs -u
