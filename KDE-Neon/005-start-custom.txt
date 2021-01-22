@@ -119,8 +119,9 @@ sudo sysctl --system
 #
 #   ## Achtung BTRFS nie mit errors=remount-ro !!!
 #
-#   ## BTRFS
-#   ## relatime,nodiratime,commit=120,ssd,space_cache,subvol=@
+#   ## BTRFS -> no need to change anymore ! current options in neon:
+#   ## subvol=@,defaults,noatime,space_cache,autodefrag,discard,compress=lzo 0 1
+#   ## subvol=@home,defaults,noatime,space_cache,autodefrag,discard,compress=lzo 0 2
 
 # XFS File Systems
     sudo sed -i '/xfs/s/defaults,noatime/relatime,nodiratime/' /etc/fstab
@@ -145,7 +146,7 @@ sudo sysctl --system
 #   activate with:
 #   sudo mount -a
 
-    echo "tmpfs   /tmp             tmpfs   defaults,relatime,mode=1777   0  0" | sudo tee -a /etc/fstab
+##  echo "tmpfs   /tmp             tmpfs   defaults,relatime,mode=1777   0  0" | sudo tee -a /etc/fstab
     echo "tmpfs   /var/spool       tmpfs   defaults,relatime,mode=1777   0  0" | sudo tee -a /etc/fstab
     echo "tmpfs   /var/tmp         tmpfs   defaults,relatime,mode=1777   0  0" | sudo tee -a /etc/fstab
     sudo mount -a
