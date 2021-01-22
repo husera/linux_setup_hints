@@ -3,13 +3,5 @@
 ###################################################################################################
 #!/bin/sh
     
-### Helper : Synaptic
-    sudo apt install synaptic apt-xapian-index
-    
-# System Tools
-    # Base
-    sudo apt purge -y nano apport apport-symptoms whoopsie 
-      
-# Desktop	
-    # Devel
-        sudo apt purge -y libc6-dbg
+### Helper
+    sudo apt install muon
