@@ -1,0 +1,45 @@
+###################################################################################################
+#    Setting Up my Raspberry PI 4 B+                                                       Feb 2022
+###################################################################################################
+
+
+### Add OS packages for ZigBee2mqtt
+     sudo apt-get install -y nodejs npm git make g++ gcc
+
+     ### Get from the git
+     cd /opt
+     sudo git clone https://github.com/Koenkk/zigbee2mqtt.git
+
+     cd /opt/zigbee2mqtt
+     sudo npm ci
+
+
+### Add the service file
+sudo tee /etc/systemd/system/zigbee2mqtt.service << EOF
+[Unit]
+Description=zigbee2mqtt
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/npm start
+WorkingDirectory=/opt/zigbee2mqtt
+StandardOutput=inherit
+# Or use StandardOutput=null if you don't want Zigbee2MQTT messages filling syslog, for more options see systemd.exec(5)
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+
+### Add shell alias for zigbee2mqtt
+cat > /etc/profile.d/zigbee2mqtt.sh << EOF
+#zigbee2mqtt
+alias z-nfo='systemctl status zigbee2mqtt'
+alias z-stop='sudo systemctl stop zigbee2mqtt'
+alias z-start='sudo systemctl start zigbee2mqtt'
+alias z-restart='sudo systemctl restart zigbee2mqtt'
+alias z-log='journalctl -u zigbee2mqtt -n100 -f'
+EOF

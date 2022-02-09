@@ -1,0 +1,30 @@
+###################################################################################################
+#    Setting Up my Raspberry PI 4 B+                                                       Feb 2022
+###################################################################################################
+
+### Set NetWork WPA settings
+sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=CH
+
+network={
+        ssid="ALEX-01"
+        psk="Cali3nte"
+        id_str="ZenBook"
+        priority=1
+}
+
+network={
+        ssid="PlanetExpress-base"
+        psk="Cali3nte315624"
+        id_str="Home"
+        priority=1
+}
+EOF
+
+### set the new interfaces to dhcp -> reserved in the dhcp-server
+sudo tee /etc/network/interfaces.d/wpa-instefaces <<EOF
+iface ZenBook inet dhcp
+iface Home inet dhcp
+EOF

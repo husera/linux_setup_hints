@@ -1,0 +1,21 @@
+###################################################################################################
+#    Setting Up my Raspberry PI 4 B+                                                       Feb 2022
+###################################################################################################
+
+
+### Add OS packages for NGINX
+    apt-get install -y nginx
+
+
+### Add nginx bash alias
+cat > /etc/profile.d/nginx.sh << EOF
+#nginx
+alias n-nfo='systemctl status nginx'
+alias n-stop='sudo systemctl stop nginx'
+alias n-start='sudo systemctl start nginx'
+alias n-restart='sudo systemctl restart nginx'
+alias n-reload='sudo systemctl reload nginx'
+alias n-log='journalctl -u nginx -n100 -f'
+alias n-check='sudo nginx -t'
+alias www="cd /var/www/html"
+EOF
