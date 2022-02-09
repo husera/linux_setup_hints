@@ -1,7 +1,0 @@
-#!/bin/sh
-
-### any Desktop ###################################################################################
-
-# Commandline tools
-    sudo apt install -y chkrootkit rar unrar mc iotop
-    sudo apt install -y build-essential git curl apt-transport-https
