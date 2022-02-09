@@ -1,0 +1,18 @@
+more /etc/wpa_supplicant/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=CH
+
+network={
+        ssid="ALEX-01"
+        psk="Cali3nte"
+        id_str="ZenBook"
+        priority=1
+}
+
+network={
+        ssid="PlanetExpress-base"
+        psk="Cali3nte315624"
+        id_str="ZenBook"
+        priority=1
+}
