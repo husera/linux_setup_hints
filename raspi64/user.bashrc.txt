@@ -1,0 +1,78 @@
+#!/bin/sh
+cat > ~/.bashrc << EOF
+# Apt-get
+alias install='sudo /usr/bin/apt install'
+alias remove='sudo /usr/bin/apt remove'
+alias autoremove='sudo /usr/bin/apt autoremove --purge'
+alias purge='sudo /usr/bin/apt purge'
+alias update='sudo /usr/bin/apt update -y && apt list --upgradable'
+alias upgrade='sudo /usr/bin/apt full-upgrade'
+alias search='/usr/bin/apt-cache search'
+alias clean='sudo /usr/bin/apt autoclean'
+
+# systemctl
+alias sh-services='systemctl list-unit-files --state=enabled.disabled'
+alias sh-timers='sudo systemctl --type timer'
+alias sh-logs='journalctl -xn50'
+alias sh-status='systemctl status'
+alias sh-ps='ps -axfw'
+
+# My IP / ports
+alias sh-ip-ext='curl ipinfo.io/ip'
+alias sh-ip='ip addr show scope global | grep inet'
+alias sh-ports='sudo netstat -plte --numeric-ports --numeric-hosts'
+
+# Special Commands
+alias now='date +"%T"'
+alias nowdate='date +"%d.%m.%Y"'
+
+alias sh-mounts='mount | sort -k 3 | column -t'
+alias sh-path='echo -e ${PATH//:/\\n}'
+alias sh-mem='free -hlmt'
+alias sh-cpu='lscpu'
+
+# Comand defaults
+alias df='df -Hl'
+alias du='du -hd1'
+alias h="history | cut -c 8-"
+alias ping='ping -c 5'
+alias wget='wget -c'
+
+#Navigating the system
+alias ~='cd ~'
+alias ..='cd ..'
+alias ll='ls -lhas'
+alias www="cd /var/www/html"
+
+#nginx
+alias n-nfo='systemctl status nginx'
+alias n-stop='sudo systemctl stop nginx'
+alias n-start='sudo systemctl start nginx'
+alias n-restart='sudo systemctl restart nginx'
+alias n-reload='sudo systemctl reload nginx'
+alias n-log='journalctl -u nginx -n100 -f'
+alias n-check='sudo nginx -t'
+
+#mosquitto
+alias mq-nfo='systemctl status mosquitto'
+alias mq-stop='sudo systemctl stop mosquitto'
+alias mq-start='sudo systemctl start mosquitto'
+alias mq-restart='sudo systemctl restart mosquitto'
+alias mq-log='journalctl -u mosquitto -n100 -f'
+
+#zigbee2mqtt
+alias z-nfo='systemctl status zigbee2mqtt'
+alias z-stop='sudo systemctl stop zigbee2mqtt'
+alias z-start='sudo systemctl start zigbee2mqtt'
+alias z-restart='sudo systemctl restart zigbee2mqtt'
+alias z-log='journalctl -u zigbee2mqtt -n100 -f'
+
+#nodered
+alias red-nfo='systemctl status nodered'
+alias red-stop='sudo systemctl stop nodered'
+alias red-start='sudo systemctl start nodered'
+alias red-restart='sudo systemctl restart nodered'
+alias red-log='journalctl -u nodered -n100 -f'
+
+EOF
+. ~/.bashrc

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+### any Desktop ###################################################################################
+
+# Commandline tools
+    sudo apt install -y nginx
+	
+# homer
+# see -> https://github.com/bastienwirtz/homer/releases
+ cd /var/www/html/
+ sudo curl -LJO https://github.com/bastienwirtz/homer/releases/download/v21.09.2/homer.zip
+
+# DOC - https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md
+#     - https://github.com/bastienwirtz/homer/blob/main/docs/customservices.md
