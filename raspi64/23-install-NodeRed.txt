@@ -5,7 +5,11 @@
 
 ### Add OS packages for NodeRed
     sudo apt-get install -y build-essential
-    bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+    
+    sudo mkdir -p /opt/nodered && cd cd /opt/nodered/
+    sudo curl -sLO https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered
+    sudo chmod 755 update-nodejs-and-nodered
+    ./update-nodejs-and-nodered --nodered-user=pi
 
 
 ### Bash file for NodeRed
