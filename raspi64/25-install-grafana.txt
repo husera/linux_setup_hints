@@ -35,3 +35,24 @@ EOF
 
 ### Note
     # Login  admin:admin
+
+### Plugins
+    sudo grafana-cli plugins install grafana-simple-json-datasource
+    sudo grafana-cli plugins install yesoreyeram-infinity-datasource
+    sudo grafana-cli plugins install volkovlabs-rss-datasource
+    sudo grafana-cli plugins install frser-sqlite-datasource
+    sudo grafana-cli plugins install fetzerch-sunandmoon-datasource
+    sudo grafana-cli plugins install andig-darksky-datasource
+    sudo grafana-cli plugins install grafana-singlestat-panel
+    sudo grafana-cli plugins install speakyourcode-button-panel
+    sudo grafana-cli plugins install grafana-clock-panel
+    sudo grafana-cli plugins install flant-statusmap-panel
+    sudo grafana-cli plugins install snuids-trafficlights-panel
+    sudo grafana-cli plugins install corpglory-progresslist-panel
+    sudo grafana-cli plugins install marcusolsson-dynamictext-panel
+    sudo grafana-cli plugins install mxswat-separator-panel
+    sudo grafana-cli plugins install gretamosa-topology-panel
+
+### Finally restart grafana
+    sudo systemctl restart grafana-server
+
