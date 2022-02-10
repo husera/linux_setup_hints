@@ -17,7 +17,16 @@
     # Hint: https://lvinsf.medium.com/grafana-behind-nginx-reverse-proxy-24ef08da7ad9
     sudo sed -i 's#;serve_from_sub_path = false#serve_from_sub_path = true#' /etc/grafana/grafana.ini
     sudo sed -i 's#;root_url = %(protocol)s://%(domain)s:%(http_port)s/#root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/#' /etc/grafana/grafana.ini
+    
+### Grafana: Enable Dashboards Public Access
+    sudo vi /etc/grafana/grafana.ini
+    ## Search for [auth.anonymous]  -> change to: "enabled = true"
+    ## and
+    ## "hide_version = true"
+    
 
+    
+### Autostart service on boot
     sudo /bin/systemctl enable grafana-server
     sudo /bin/systemctl start grafana-server
 
