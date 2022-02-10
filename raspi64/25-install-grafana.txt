@@ -14,6 +14,7 @@
     sudo apt-get install -y grafana
     
 ### change config to serve behind a nginx proxy
+    # Hint: https://lvinsf.medium.com/grafana-behind-nginx-reverse-proxy-24ef08da7ad9
     sudo sed -i 's#;serve_from_sub_path = false#serve_from_sub_path = true#' /etc/grafana/grafana.ini
     sudo sed -i 's#;root_url = %(protocol)s://%(domain)s:%(http_port)s/#root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/#' /etc/grafana/grafana.ini
 
