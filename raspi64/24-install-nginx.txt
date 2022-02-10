@@ -5,6 +5,9 @@
 
 ### Add OS packages for NGINX
     apt-get install -y nginx
+    
+### Config to conf.d
+    sudo mv /etc/nginx/sites-enabled/default /etc/nginx/conf.d/raspi.conf
 
 
 ### Add nginx bash alias
@@ -17,5 +20,6 @@ alias n-restart='sudo systemctl restart nginx'
 alias n-reload='sudo systemctl reload nginx'
 alias n-log='journalctl -u nginx -n100 -f'
 alias n-check='sudo nginx -t'
+alias n-edit='sudo vi /etc/nginx/conf.d/raspi.conf'
 alias www="cd /var/www/html"
 EOF
