@@ -19,7 +19,7 @@ EOF
 ### Set system alias ( show something )
 sudo tee /etc/profile.d/sys-alias.sh << EOF
 # systemctl
-alias sh-services='systemctl list-unit-files --state=enabled.disabled'
+alias sh-services='systemctl list-unit-files --state enabled --state disabled'
 alias sh-timers='sudo systemctl --type timer'
 alias sh-logs='journalctl -xn50'
 alias sh-status='systemctl status'
