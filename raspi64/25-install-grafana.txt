@@ -30,7 +30,6 @@ alias g-stop='sudo systemctl stop grafana-server'
 alias g-start='sudo systemctl start grafana-server'
 alias g-restart='sudo systemctl restart grafana-server'
 alias g-log='journalctl -u grafana-server -n100 -f'
-alias g-check='sudo nginx -t'
 EOF
 
 
