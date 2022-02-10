@@ -10,18 +10,33 @@ country=CH
 
 network={
         ssid="ALEX-01"
-        psk="Cali3nte"
+        psk=xxxxxxxxxxxxxxxxx
         id_str="ZenBook"
         priority=1
 }
 
 network={
-        ssid="PlanetExpress-base"
-        psk="Cali3nte315624"
+        ssid="PlanetExpressBase"
+        psk=xxxxxxxxxxxxxxxxxx
         id_str="Home"
         priority=1
 }
 EOF
+
+
+
+### Generate PSK passwords:
+### sample:
+wpa_passphrase "My-Wifi" "MyPassword"
+   @ Sample output:
+   #network={
+   #     ssid="My-Wifi"
+   #     #psk="MyPassword"
+   #     psk=e26fc64ab78c240890766a8c9872e3a284ab5344821377667cc24513fb60745c
+   #}
+#### -> add passwords manually to the file !
+
+
 
 ### set the new interfaces to dhcp -> reserved in the dhcp-server
 sudo tee /etc/network/interfaces.d/wpa-instefaces <<EOF
