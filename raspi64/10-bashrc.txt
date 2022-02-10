@@ -39,7 +39,7 @@ EOF
 
 
 ### Set command defaults and navigation
-cat > /etc/profile.d/defaults.sh << EOF
+sudo tee /etc/profile.d/defaults.sh << EOF
 # Comand defaults
 alias df='df -Hl'
 alias du='du -hd1'
@@ -50,4 +50,5 @@ alias wget='wget -c'
 alias ~='cd ~'
 alias ..='cd ..'
 alias ll='ls -lhas'
+alias profile='for file in  /etc/profile.d/*.sh; do source ${file}; done'
 EOF
