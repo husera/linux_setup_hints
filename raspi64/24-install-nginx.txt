@@ -11,7 +11,7 @@
 
 
 ### Add nginx bash alias
-cat > /etc/profile.d/nginx.sh << EOF
+sudo tee > /etc/profile.d/nginx.sh << EOF
 #nginx
 alias n-nfo='systemctl status nginx'
 alias n-stop='sudo systemctl stop nginx'
