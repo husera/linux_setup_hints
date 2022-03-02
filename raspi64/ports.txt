@@ -3,4 +3,5 @@
 3000 - Grafana
 
 
-also seee
+also see
+https://www.home-assistant.io/installation/linux
