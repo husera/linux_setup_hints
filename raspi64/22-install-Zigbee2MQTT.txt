@@ -35,7 +35,7 @@ EOF
 
 
 ### Add shell alias for zigbee2mqtt
-cat > /etc/profile.d/zigbee2mqtt.sh << EOF
+sudo tee /etc/profile.d/zigbee2mqtt.sh << EOF
 #zigbee2mqtt
 alias z-nfo='systemctl status zigbee2mqtt'
 alias z-stop='sudo systemctl stop zigbee2mqtt'
