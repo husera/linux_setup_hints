@@ -3,6 +3,8 @@
 ###################################################################################################
 ### See also:
 ### https://phoscon.de/en/raspbee/install#connection
+### and:
+### https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html
 
 sudo raspi-config
 #> Interfacing Options → Serial
@@ -10,6 +12,11 @@ sudo raspi-config
 #> Would you like a login shell accessible over serial? → No
 #> Would you like the serial port hardware to be enabled? → Yes
 #> Note: Changes to access rights only become active after a restart.
+
+# Give access rights to the serial device by adding the user to the correct groups
+sudo usermod -a -G uucp $USER
+sudo usermod -a -G tty $USER
+sudo usermod -a -G dialout $USER
 
 ### Add OS packages for ZigBee2mqtt
      sudo apt-get install -y nodejs npm git make g++ gcc
