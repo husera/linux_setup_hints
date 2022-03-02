@@ -1,3 +1,6 @@
 8080 - Zigbee2MQTT
 1880 - NodeRed
 3000 - Grafana
+
+
+also seee
