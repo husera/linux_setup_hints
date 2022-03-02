@@ -9,11 +9,15 @@
     sudo mkdir -p /opt/nodered && cd /opt/nodered/
     sudo curl -sLO https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered
     sudo chmod 755 update-nodejs-and-nodered
-    ./update-nodejs-and-nodered --nodered-user=pi
+    ./update-nodejs-and-nodered --confirm-root
 
+sudo mkdir -p /etc/node-red && sudo chmod 775 /etc/node-red/ && sudo chown root:pi /etc/node-red
+node-red admin init
+#? Settings file ‣ /etc/node-red/settings.js
+#? ......
 
 ### Bash file for NodeRed
-cat > /etc/profile.d/nodered.sh << EOF
+sudo tee /etc/profile.d/nodered.sh << EOF
 #nodered
 alias red-nfo='systemctl status nodered'
 alias red-stop='sudo systemctl stop nodered'
