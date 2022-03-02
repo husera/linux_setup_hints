@@ -6,6 +6,7 @@
 sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
+ap_scan=1
 country=CH
 
 network={
