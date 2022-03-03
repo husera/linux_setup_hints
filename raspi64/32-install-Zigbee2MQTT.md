@@ -2,20 +2,20 @@
 ## Zig Bee 2 MQtt
 
 ### See also:
-- [Phoscon](https://phoscon.de/en/raspbee/install#connection)
-and:
-- [ZigBee2MQtt install guide](https://www.zigbee2mqtt.io/guide/installation/01_linux.html)
-- [ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)
+[Phoscon](https://phoscon.de/en/raspbee/install#connection)  
+and:  
+[ZigBee2MQtt install guide](https://www.zigbee2mqtt.io/guide/installation/01_linux.html)  
+[ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)  
 
 ### Configure Serial interface
 ```
 sudo raspi-config
 ```
-> Interfacing Options → Serial
-> 
-> Would you like a login shell accessible over serial? → No
-> Would you like the serial port hardware to be enabled? → Yes
-> Note: Changes to access rights only become active after a restart.
+> Interfacing Options → Serial  
+>   
+> Would you like a login shell accessible over serial? → No  
+> Would you like the serial port hardware to be enabled? → Yes  
+> Note: Changes to access rights only become active after a restart.  
 
 ### Give access rights to the serial device by adding the user to the correct groups
 ```
