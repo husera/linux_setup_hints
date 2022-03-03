@@ -2,9 +2,10 @@
 ## Zig Bee 2 MQtt
 
 ### See also:
-### [Phoscon](https://phoscon.de/en/raspbee/install#connection)
+[Phoscon](https://phoscon.de/en/raspbee/install#connection)
 and:
-### [ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)
+[ZigBee2MQtt install guide](https://www.zigbee2mqtt.io/guide/installation/01_linux.html)
+[ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)
 
 ### Configure Serial interface
 ```
@@ -22,27 +23,38 @@ sudo usermod -a -G dialout $USER
 ```
 
 ### Add OS packages for ZigBee2mqtt
-     # Check https://github.com/nodesource/distributions/blob/master/README.md if you want to install a specific version from NodeJS repositories instead.
-     sudo apt-get install -y nodejs npm git make g++ gcc
+```
+sudo apt-get install -y nodejs npm git make g++ gcc
+```
 
-     # Verify that the correct nodejs and npm (automatically installed with nodejs)
-     # version has been installed
-     node --version  # Should output v10.X, v12.X, v14.X, v15.X or V16.X
-     npm --version  # Should output 6.X or 7.X
+Verify that the correct nodejs and npm (automatically installed with nodejs) version has been installed:
+```
+node --version  # Should output v10.X, v12.X, v14.X, v15.X or V16.X
+npm --version  # Should output 6.X or 7.X
+```
 
-     # Clone Zigbee2MQTT repository
-     git clone https://github.com/Koenkk/zigbee2mqtt.git
-     sudo mv zigbee2mqtt /opt/zigbee2mqtt
+### Clone Zigbee2MQTT repository
+```
+git clone https://github.com/Koenkk/zigbee2mqtt.git
+sudo mv zigbee2mqtt /opt/zigbee2mqtt
+```
 
-# Install dependencies (as user "pi")
-     cd /opt/zigbee2mqtt
-     npm ci
-
+### Install dependencies (as user "pi")
+```
+cd /opt/zigbee2mqtt
+npm ci
+```
 
 ### Configuring
+```
 vi /opt/zigbee2mqtt/data/configuration.yaml
+```
+For RaspBee II:
+> serial:
+>  adapter: deconz
 
 ### Add the service file
+```
 sudo tee /etc/systemd/system/zigbee2mqtt.service << EOF
 [Unit]
 Description=zigbee2mqtt
@@ -60,9 +72,10 @@ User=pi
 [Install]
 WantedBy=multi-user.target
 EOF
-
+```
 
 ### Add shell alias for zigbee2mqtt
+```
 sudo tee /etc/profile.d/zigbee2mqtt.sh << EOF
 #zigbee2mqtt
 alias z-nfo='systemctl status zigbee2mqtt'
@@ -71,3 +84,4 @@ alias z-start='sudo systemctl start zigbee2mqtt'
 alias z-restart='sudo systemctl restart zigbee2mqtt'
 alias z-log='journalctl -u zigbee2mqtt -n100 -f'
 EOF
+```
