@@ -1,1 +1,30 @@
-https://github.com/home-assistant/supervised-installer
+###################################################################################################
+#    Setting Up my Raspberry PI 4 B+                                                       Feb 2022
+###################################################################################################
+
+### Doc
+    # https://github.com/home-assistant/supervised-installer
+
+### Step 1: Install the following dependacy's with this command:
+    sudo apt install jq wget curl udisks2 libglib2.0-bin network-manager dbus apparmor apparmor-utils -y
+    sudo apt-get purge modemmanager ; sudo apt autoremove
+    
+### Step 2: Install Docker-CE with the following command:
+    curl -fsSL get.docker.com | sh
+    sudo usermod -aG docker pi
+    # Check daemon
+    docker --version
+
+### Step 3: Agent for Home Assistant OS - https://github.com/home-assistant/os-agent/tree/main#using-home-assistant-supervised-on-debian
+    # Check for the latest version: https://github.com/home-assistant/os-agent/releases/
+    # Download:
+    curl -LJO https://github.com/home-assistant/os-agent/releases/download/1.2.2/os-agent_1.2.2_linux_armv7.deb
+    # Install the deb
+    sudo apt install ./os-agent_1.2.2_linux_armv7.deb
+    
+    # Check agent:
+    gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
+    
+### Step 4: Get the installer    
+    wget https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
+    
