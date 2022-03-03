@@ -49,9 +49,9 @@ npm ci
 ```
 vi /opt/zigbee2mqtt/data/configuration.yaml
 ```
-For RaspBee II:
-> serial:
->  adapter: deconz
+For RaspBee II:  
+> serial:  
+>  adapter: deconz  
 
 ### Add the service file
 ```
