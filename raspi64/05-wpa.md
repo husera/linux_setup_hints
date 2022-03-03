@@ -30,12 +30,14 @@ EOF
 - sample:
 ```
 wpa_passphrase "My-Wifi" "MyPassword"
-   @ Sample output:
-   #network={
-   #     ssid="My-Wifi"
-   #     #psk="MyPassword"
-   #     psk=e26fc64ab78c240890766a8c9872e3a284ab5344821377667cc24513fb60745c
-   #}
+```
+- Sample output:
+```
+   network={
+        ssid="My-Wifi"
+        #psk="MyPassword"
+        psk=e26fc64ab78c240890766a8c9872e3a284ab5344821377667cc24513fb60745c
+   }
 ```
 - -> add passwords manually to the file !
 
@@ -48,7 +50,7 @@ EOF
 ```
 
 ### disable random mac address for NetworkManager ###
-# not needed since NM is not in use 
+not needed since NM is not in use 
 ```
 # sudo mkdir -p /etc/NetworkManager/conf.d/
 # sudo tee /etc/NetworkManager/conf.d/30-mac-randomization.conf <<EOF
