@@ -24,4 +24,4 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 EOF
 
 ### load new sysctl file
-sudo sysctl -q --system
+```sudo sysctl -q --system```
