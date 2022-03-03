@@ -1,8 +1,8 @@
-###################################################################################################
-#    Setting Up my Raspberry PI 4 B+                                                       Feb 2022
-###################################################################################################
+# Setting Up my Raspberry PI 4 B+
+## All my bash alias
 
-### Set apt alias
+### #Set apt alias
+```
 sudo tee /etc/profile.d/apt.sh << EOF
 # Apt-get
 alias install='sudo /usr/bin/apt install'
@@ -14,9 +14,10 @@ alias upgrade='sudo /usr/bin/apt full-upgrade'
 alias search='/usr/bin/apt-cache search'
 alias clean='sudo /usr/bin/apt autoclean'
 EOF
+```
 
-
-### Set system alias ( show something )
+### #Set system alias ( show something )
+```
 sudo tee /etc/profile.d/sys-alias.sh << EOF
 # systemctl
 alias sh-services='systemctl list-unit-files --state enabled --state disabled'
@@ -24,9 +25,10 @@ alias sh-timers='sudo systemctl --type timer'
 alias sh-logs='journalctl -xn50'
 alias sh-status='systemctl status'
 alias sh-ps='ps -axfw'
+```
 
-
-# My IP / ports
+### #My IP / ports
+```
 alias sh-ip-ext='curl ipinfo.io/ip'
 alias sh-ip='ip addr show scope global | grep inet'
 alias sh-ports='sudo netstat -plte --numeric-ports --numeric-hosts'
@@ -36,9 +38,10 @@ alias sh-cpu='lscpu'
 alias sh-mem='free -hlmt'
 alias sh-cpu='lscpu'
 EOF
+```
 
-
-### Set command defaults and navigation
+### #Set command defaults and navigation
+```
 sudo tee /etc/profile.d/defaults.sh << EOF
 # Comand defaults
 alias df='df -Hl'
@@ -52,5 +55,6 @@ alias ..='cd ..'
 alias ll='ls -lhas'
 alias profile="for file in  /etc/profile.d/*.sh; do source \${file}; done"
 EOF
-
+```
+### finally load the alias:
 for file in  /etc/profile.d/*.sh; do source ${file}; done
