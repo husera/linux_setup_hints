@@ -52,3 +52,5 @@ alias ..='cd ..'
 alias ll='ls -lhas'
 alias profile="for file in  /etc/profile.d/*.sh; do source \${file}; done"
 EOF
+
+for file in  /etc/profile.d/*.sh; do source ${file}; done
