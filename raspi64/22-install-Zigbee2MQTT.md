@@ -5,7 +5,10 @@
 [Phoscon](https://phoscon.de/en/raspbee/install#connection)  
 and:  
 [ZigBee2MQtt install guide](https://www.zigbee2mqtt.io/guide/installation/01_linux.html)  
-[ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)  
+[ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)
+
+Note:
+MQTT needs to be online !
 
 ### Configure Serial interface
 ```
