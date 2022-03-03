@@ -46,12 +46,13 @@ iface Home inet dhcp
 EOF
 
 ### disable random mac address for NetworkManager ###
-sudo mkdir -p /etc/NetworkManager/conf.d/
-sudo tee /etc/NetworkManager/conf.d/30-mac-randomization.conf <<EOF
-[device-mac-randomization]
-wifi.scan-rand-mac-address=no
-
-[connection-mac-randomization]
-ethernet.cloned-mac-address=permanent
-wifi.cloned-mac-address=permanent
-EOF
+# not needed since NM is not in use 
+# sudo mkdir -p /etc/NetworkManager/conf.d/
+# sudo tee /etc/NetworkManager/conf.d/30-mac-randomization.conf <<EOF
+# [device-mac-randomization]
+# wifi.scan-rand-mac-address=no
+# 
+# [connection-mac-randomization]
+# ethernet.cloned-mac-address=permanent
+# wifi.cloned-mac-address=permanent
+# EOF
