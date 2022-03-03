@@ -25,11 +25,8 @@ alias sh-timers='sudo systemctl --type timer'
 alias sh-logs='journalctl -xn50'
 alias sh-status='systemctl status'
 alias sh-ps='ps -axfw'
-```
-
-### #My IP / ports
-```
-alias sh-ip-ext='curl ipinfo.io/ip'
+# Show system parts
+sudo tee /etc/profile.d/sys-alias.sh << EOFalias sh-ip-ext='curl ipinfo.io/ip'
 alias sh-ip='ip addr show scope global | grep inet'
 alias sh-ports='sudo netstat -plte --numeric-ports --numeric-hosts'
 alias sh-mounts='mount | sort -k 3 | column -t'
