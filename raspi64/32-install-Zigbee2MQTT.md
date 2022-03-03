@@ -2,10 +2,10 @@
 ## Zig Bee 2 MQtt
 
 ### See also:
-[Phoscon](https://phoscon.de/en/raspbee/install#connection)
+- [Phoscon](https://phoscon.de/en/raspbee/install#connection)
 and:
-[ZigBee2MQtt install guide](https://www.zigbee2mqtt.io/guide/installation/01_linux.html)
-[ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)
+- [ZigBee2MQtt install guide](https://www.zigbee2mqtt.io/guide/installation/01_linux.html)
+- [ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)
 
 ### Configure Serial interface
 ```
