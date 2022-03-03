@@ -17,6 +17,11 @@ sudo raspi-config
 > Would you like the serial port hardware to be enabled? → Yes  
 > Note: Changes to access rights only become active after a restart.  
 
+Also disable hciuart
+```
+sudo systemctl disable hciuart
+```
+
 ### Give access rights to the serial device by adding the user to the correct groups
 ```
 sudo usermod -a -G dialout $USER
