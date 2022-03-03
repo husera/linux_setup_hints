@@ -24,6 +24,10 @@ network={
 }
 EOF
 ```
+#### to check
+```
+sudo more /etc/wpa_supplicant/wpa_supplicant.conf
+```
 
 
 ### Generate PSK passwords:
