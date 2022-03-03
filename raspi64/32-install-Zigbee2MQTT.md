@@ -1,22 +1,25 @@
-###################################################################################################
-#    Setting Up my Raspberry PI 4 B+                                                       Feb 2022
-###################################################################################################
+# Setting Up my Raspberry PI 4 B+
+## Zig Bee 2 MQtt
+
 ### See also:
-### https://phoscon.de/en/raspbee/install#connection
-### and:
-### https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html
+### [Phoscon](https://phoscon.de/en/raspbee/install#connection)
+and:
+### [ZigBee2MQtt troubbleshooting guide](https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start.html)
 
+### Configure Serial interface
+```
 sudo raspi-config
-#> Interfacing Options → Serial
-#> 
-#> Would you like a login shell accessible over serial? → No
-#> Would you like the serial port hardware to be enabled? → Yes
-#> Note: Changes to access rights only become active after a restart.
+```
+> Interfacing Options → Serial
+> 
+> Would you like a login shell accessible over serial? → No
+> Would you like the serial port hardware to be enabled? → Yes
+> Note: Changes to access rights only become active after a restart.
 
-# Give access rights to the serial device by adding the user to the correct groups
-sudo usermod -a -G uucp $USER
-sudo usermod -a -G tty $USER
+### Give access rights to the serial device by adding the user to the correct groups
+```
 sudo usermod -a -G dialout $USER
+```
 
 ### Add OS packages for ZigBee2mqtt
      # Check https://github.com/nodesource/distributions/blob/master/README.md if you want to install a specific version from NodeJS repositories instead.
