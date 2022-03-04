@@ -2,7 +2,7 @@
 ## Node RED
 
 
-### Add OS packages for NodeRed
+### Add OS packages for NodeRed and install from GIT
 ```
 sudo apt-get install -y build-essential
 
