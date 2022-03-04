@@ -20,13 +20,13 @@ EOF
 ```
 sudo tee /etc/profile.d/sys-alias.sh << EOF
 # systemctl
-alias sh-services='systemctl list-unit-files --state enabled --state disabled'
+alias sh-services='systemctl list-unit-files --no-pager --state enabled,disabled'
 alias sh-timers='sudo systemctl --type timer'
 alias sh-logs='journalctl -xn50'
 alias sh-status='systemctl status'
 alias sh-ps='ps -axfw'
 # Show system parts
-sudo tee /etc/profile.d/sys-alias.sh << EOFalias sh-ip-ext='curl ipinfo.io/ip'
+alias sh-ip-ext='curl ipinfo.io/ip'
 alias sh-ip='ip addr show scope global | grep inet'
 alias sh-ports='sudo netstat -plte --numeric-ports --numeric-hosts'
 alias sh-mounts='mount | sort -k 3 | column -t'
