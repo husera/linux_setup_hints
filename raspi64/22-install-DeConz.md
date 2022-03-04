@@ -55,6 +55,20 @@ sudo apt update
 sudo apt install deconz
 ```
 
+### Change the port of the service (so we can use nginx as a reverse proxy)
+```
+/etc/systemd/system/deconz.service.d/override.conf
+
+sudo tee<<EOF
+[Service]
+ExecStart=
+ExecStart=/usr/bin/deCONZ -platform minimal --http-port=8080 --ws-port=8081 --auto-connect=1
+EOF
+
+sudo systemctl daemon-reload
+```
+
+
 ### Enable and start the service
 ```
 sudo systemctl enable deconz.service
