@@ -10,6 +10,11 @@ bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/mast
 node-red admin init
 ```
 
+### Start NodeRed as a service
+```
+sudo systemctl enable nodered.service
+sudo systemctl start nodered.service
+```
 
 ### Bash file for NodeRed
 ```
