@@ -2,12 +2,12 @@
 ## Start and sysctl
 
 
-### Hints and docs:
-- [Pi imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility)
-- [Git cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
+### #Hints and docs:
+- # [Pi imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility)
+- # [Git cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
 
 
-#### write custom sysctl file
+#### #write custom sysctl file
 ```
 sudo tee /etc/sysctl.d/01-alex.conf <<EOF
 # Do less swapping
@@ -23,7 +23,7 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 EOF
 ```
 
-#### load new sysctl file
+#### #load new sysctl file
 ```
 sudo sysctl -q --system
 ```
