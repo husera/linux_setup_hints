@@ -2,7 +2,7 @@
 ## Start and sysctl
 
 
-### #Hints and docs:
+### Hints and docs:
 - [Pi imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility)
 - [Git cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
 
