@@ -87,3 +87,7 @@ alias de-restart='sudo systemctl restart deconz'
 alias de-log='journalctl -u deconz -n100 -f'
 EOF
 ```
+
+## Hints
+### Data location for Backup
+>/home/pi/.local/share/dresden-elektronik/deCONZ/
