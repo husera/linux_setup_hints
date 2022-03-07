@@ -1,14 +1,13 @@
-###################################################################################################
-#    Setting Up my Raspberry PI 4 B+                                                       Feb 2022
-###################################################################################################
-
+# Setting Up my Raspberry PI 4 B+
+## nginx
 
 ### Add OS packages for NGINX
-    sudo apt-get install -y nginx
+```
+sudo apt-get install -y nginx
+```
     
 ### Config to conf.d
     sudo mv /etc/nginx/sites-enabled/default /etc/nginx/conf.d/raspi.conf
-
 
 ### Add nginx bash alias
 sudo tee /etc/profile.d/nginx.sh << EOF
