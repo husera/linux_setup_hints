@@ -68,6 +68,7 @@ EOF
  
 ## Influx DB
 ### See: https://portal.influxdata.com/downloads/
+### and: https://dev.to/mikemahoney218/installing-telegraf-influxdb-and-grafana-on-raspberry-pi-7e4
 
 ```
 wget -qO- https://repos.influxdata.com/influxdb.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/influxdb.gpg > /dev/null
@@ -85,4 +86,9 @@ sudo apt-get update && sudo apt-get install influxdb2
  more /etc/influxdb/config.toml
  ```
 Access the db at port 8086
+
+---
+## Telegraf
+
+tbd
 
