@@ -1,6 +1,5 @@
-###################################################################################################
-#    Setting Up my Raspberry PI 4 B+                                                       Feb 2022
-###################################################################################################
+# Setting Up my Raspberry PI 4 B+
+## Install Grafana and influxdb and Telegraf
 
 ### Doc
     # https://grafana.com/tutorials/install-grafana-on-raspberry-pi/
