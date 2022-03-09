@@ -81,8 +81,8 @@ sudo apt-get update && sudo apt-get install influxdb2
 
 ### Review Config
 ```
+ more /etc/default/influxdb2
  more /etc/influxdb/config.toml
  ```
->bolt-path = "/var/lib/influxdb/influxd.bolt"
->engine-path = "/var/lib/influxdb/engine"
+Access the db at port 8086
 
