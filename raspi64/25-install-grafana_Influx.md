@@ -73,5 +73,10 @@ echo "deb [signed-by=/etc/apt/trusted.gpg.d/influxdb.gpg] https://repos.influxda
 
 sudo apt-get update && sudo apt-get install influxdb2
 
-
+### Review Config
+```
+ more /etc/influxdb/config.toml
+ ```
+>bolt-path = "/var/lib/influxdb/influxd.bolt"
+>engine-path = "/var/lib/influxdb/engine"
 
