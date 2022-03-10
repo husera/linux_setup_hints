@@ -19,21 +19,27 @@ EOF
 ### #Set system alias ( show something )
 ```
 sudo tee /etc/profile.d/sys-alias.sh << EOF
+#
 # systemctl
 alias sh-services='systemctl list-unit-files --no-pager --state enabled,disabled'
 alias sh-timers='sudo systemctl --type timer'
 alias sh-logs='journalctl -xn50'
 alias sh-status='systemctl status'
 alias sh-ps='ps -axfw'
+#
 # Show system parts
 alias sh-ip-ext='curl ipinfo.io/ip'
 alias sh-ip='ip addr show scope global | grep inet'
 alias sh-ports='sudo netstat -plte --numeric-ports --numeric-hosts'
 alias sh-mounts='mount | sort -k 3 | column -t'
+alias sh-df='df -h -txfs -text4 | sort -rk5n,2'
+alias sh-du='du -d1s -h'
 alias sh-mem='free -hlmt'
 alias sh-cpu='lscpu'
-alias sh-mem='free -hlmt'
-alias sh-cpu='lscpu'
+#
+# Easy access to std commands
+alias ff='find . -type f -iname'
+alias ping="ping -c10 -i.2"
 EOF
 ```
 
