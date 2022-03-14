@@ -1,11 +1,9 @@
 # Setting Up my KDE Neon
 ### Readings
-(ItsFoss guide)(https://itsfoss.com/virtualbox-guest-additions-ubuntu/)
+[ItsFoss guide](https://itsfoss.com/virtualbox-guest-additions-ubuntu/)
 
 ### detect VM-Guest is running on which hypervisor
-```
-sudo dmidecode -s system-manufacturer
-```
+`sudo dmidecode -s system-manufacturer`
 
 ### install VmWare Tools
 ```
