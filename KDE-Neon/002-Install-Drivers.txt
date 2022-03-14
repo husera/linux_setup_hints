@@ -1,8 +1,8 @@
-###################################################################################################
-#    Setting Up my KDE neon                                                                Jan 2021
-###################################################################################################
-# Update PCI Database
-    sudo update-pciids
+# Setting Up my KDE neon
+### Update PCI Database
+```
+sudo update-pciids
+```
     # Check installed Hardware
     lspci
     # Full Report:
