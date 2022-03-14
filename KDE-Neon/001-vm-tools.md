@@ -1,23 +1,30 @@
 # Setting Up my KDE Neon
 
-# detect VM-Guest is running on which hypervisor
-sudo dmidecode -s system-manufacturer
 
-### VmWare Tools
-###################################################################################################
+### detect VM-Guest is running on which hypervisor
+```
+sudo dmidecode -s system-manufacturer
+```
+
+### install VmWare Tools
+```
     sudo apt install open-vm-tools-desktop 
+```
 
 ### virtual BOX Guest Additions (alternative)
-###################################################################################################
-    # Be sure to install DKMS before installing the Linux Guest Additions. 
-    sudo apt-get install dkms
+```
+    sudo apt-get install dkms build-essential linux-headers-generic
+```    
 
-    # Change to the directory where your CD-ROM drive is mounted and execute as root:
+```
+# Change to the directory where your CD-ROM drive is mounted and execute as root:
     sh ./VBoxLinuxAdditions.run
 
-    # need reboot
+```
+### we need to reboot
+```
     sudo reboot
-
+```
     # Berechtigung shared folder
     sudo usermod -a -G vboxusers $USER
 
