@@ -1,5 +1,6 @@
 # Setting Up my KDE Neon
-
+### Readings
+(sss)[https://itsfoss.com/virtualbox-guest-additions-ubuntu/]
 
 ### detect VM-Guest is running on which hypervisor
 ```
