@@ -1,6 +1,4 @@
-###################################################################################################
-#    Setting Up my KDE Neon                                                                Jan 2021
-###################################################################################################
+# Setting Up my KDE Neon
 
 # detect VM-Guest is running on which hypervisor
 sudo dmidecode -s system-manufacturer
