@@ -31,8 +31,9 @@ sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/rep
 sudo apt update
 sudo apt install log2ram
 
-# Change Size to 100 M
+# Change Size to 100M and also enable compression (requires zram)
 sudo sed -i 's/SIZE=40M/SIZE=100M/' /etc/log2ram.conf
+sudo sed -i 's/ZL2R=false/ZL2R=true/' /etc/log2ram.conf
 
 # Change Systemd journal maxsize to 25M
 sudo sed -i 's/#SystemMaxUse=/SystemMaxUse=25M/' /etc/systemd/journald.conf
