@@ -9,7 +9,8 @@ sudo apt -y dist-upgrade
 
 ### Add OS packages
 ```
-sudo apt install -y chkrootkit unrar mc iotop zram-tools rsync
+sudo apt install -y chkrootkit unrar mc iotop zram-tools rsync apt-transport-https
+
 ```
 
 ## Configure zswap
