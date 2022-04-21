@@ -7,5 +7,6 @@
 + [nice video about Influx -> grafana](https://www.youtube.com/watch?v=fHjSsgwyMLE)
 + [IotLink für Windows](https://iotlink.gitlab.io/index.html)
 + [Alternate Dashboard](https://github.com/cinhcet/node-red-contrib-component-dashboard)
++ [And more dashboards- for MQTT](http://www.steves-internet-guide.com/iot-mqtt-dashboards/)
 
 [Interesting:](https://github.com/obazoud/awesome-dashboard)
