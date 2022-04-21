@@ -6,5 +6,6 @@
 + [from MQTT to InfluxDB via Node-Red](https://gist.github.com/FranzAndreas/d72d8edcc2de26b0af5671cd764d2938)
 + [nice video about Influx -> grafana](https://www.youtube.com/watch?v=fHjSsgwyMLE)
 + [IotLink für Windows](https://iotlink.gitlab.io/index.html)
++ [Alternate Dashboard](https://github.com/cinhcet/node-red-contrib-component-dashboard)
 
 [Interesting:](https://github.com/obazoud/awesome-dashboard)
