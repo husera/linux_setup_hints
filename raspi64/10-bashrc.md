@@ -36,6 +36,7 @@ alias sh-df='df -h -txfs -text4 | sort -rk5n,2'
 alias sh-du='du -d1s -h'
 alias sh-mem='free -hlmt'
 alias sh-cpu='lscpu'
+alias sh-blk="lsblk -S ; lsblk -f"
 #
 # Easy access to std commands
 alias ff='find . -type f -iname'
