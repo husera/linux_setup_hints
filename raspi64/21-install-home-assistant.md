@@ -4,9 +4,6 @@
 and also:
 [Common tasks](https://www.home-assistant.io/common-tasks/core/)
 
-### See also:
-[Phoscon](https://phoscon.de/en/raspbee/install#connection)  
-[Install](www.home-assistant.io/installation/raspberrypi#install-home-assistant-core)  
 
 ### Install dependencies
 
