@@ -37,6 +37,7 @@ alias sh-du='du -d1s -h'
 alias sh-mem='free -hlmt'
 alias sh-cpu='lscpu'
 alias sh-blk="lsblk -S ; lsblk -f"
+alias sh-temp='head -n 1 /sys/class/thermal/thermal_zone0/temp | xargs -I{} awk "BEGIN {printf \"%.2f\n\", {}/1000}"'
 #
 # Easy access to std commands
 alias ff='find . -type f -iname'
