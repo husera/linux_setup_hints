@@ -72,7 +72,23 @@ sudo systemctl start home-assistant@homeassistant
 ```
 sudo tee /etc/profile.d/homeassistant.sh << EOF
 # Comand defaults
-alias homeassistant="sudo -u homeassistant -H -i"
+alias homeassistant="sudo -u homeassistant -i"
+
+alias ha-nfo='systemctl status home-assistant@homeassistant.service'
+alias ha-stop='sudo systemctl stop home-assistant@homeassistant.service'
+alias ha-start='sudo systemctl start home-assistant@homeassistant.service'
+alias ha-restart='sudo systemctl restart home-assistant@homeassistant.service'
+alias ha-log='journalctl -u home-assistant@homeassistant.service -n100 -f'
 EOF
+```
+
+Add the following to :
+```
+vi .bashrc
+```
+```
+.....
+cd ~
+source /srv/homeassistant/bin/activate
 ```
 
