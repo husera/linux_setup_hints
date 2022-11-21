@@ -1,6 +1,8 @@
 # Setting Up my Raspberry PI 4 B+
 ## Home Assistant Core
-https://www.home-assistant.io/installation/raspberrypi#install-home-assistant-core
+[Install Core](https://www.home-assistant.io/installation/raspberrypi#install-home-assistant-core)
+and also:
+[Common tasks](https://www.home-assistant.io/common-tasks/core/)
 
 ### See also:
 [Phoscon](https://phoscon.de/en/raspbee/install#connection)  
