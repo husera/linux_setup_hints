@@ -72,7 +72,7 @@ sudo systemctl start home-assistant@homeassistant
 ```
 sudo tee /etc/profile.d/homeassistant.sh << EOF
 # Comand defaults
-alias homeassistant="sudo -u homeassistant -s"
+alias homeassistant="sudo -u homeassistant -H -i"
 EOF
 ```
 
