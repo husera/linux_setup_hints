@@ -26,7 +26,7 @@ sudo chown homeassistant:homeassistant /srv/homeassistant
 ```
 As homeassistant user:
 ```
-sudo -u homeassistant -H -s
+sudo -u homeassistant -H -i
 cd /srv/homeassistant
 python3 -m venv .
 source bin/activate
