@@ -40,8 +40,35 @@ Finally install the CORE
 pip3 install homeassistant
 ```
 
+### Systemd startup
+[reference](https://community.home-assistant.io/t/autostart-using-systemd/199497)
+as "pi" user do:
+```
+sudo tee /etc/systemd/system/home-assistant@homeassistant.service << EOF
+[Unit]
+Description=Home Assistant
+After=network-online.target
 
-### Change the shell env for homeassistant
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/home/%i/.homeassistant
+ExecStart=/srv/homeassistant/bin/hass -c "/home/%i/.homeassistant"
+RestartForceExitStatus=100
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+Now activate it:
+```
+sudo systemctl --system daemon-reload
+sudo systemctl enable home-assistant@homeassistant
+sudo systemctl start home-assistant@homeassistant
+```
+
+
+### Change the shell env for homeassistant for more comfort
 ```
 sudo tee /etc/profile.d/homeassistant.sh << EOF
 # Comand defaults
