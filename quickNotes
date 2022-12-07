@@ -1,0 +1,38 @@
+# to be included in the setup
+**************************************************
+*** Z-Swap
+    -> sudo vi /etc/systemd/system/zram.service
+
+        [Unit]
+        # Dont forget to "sudo systemctl daemon-reload" after changing a service file
+        Description="Start a z-swap device"
+
+        [Service]
+        # Hint: Multiple execStart only allowed for Type=oneshot -> they will run in sequence
+        Type=oneshot
+
+        # We store the status =running even all processes were stopped after unit start
+        # -> needed because the zswap device will be there until stop of the unit
+        RemainAfterExit=yes
+
+        # reserve the devices
+        # note: We use /dev/zram0 as temp device for backup only and /dev/zram1 for zswap
+        ExecStart=/usr/sbin/modprobe zram num_devices=2
+        # Calculate the size and set it for z-swap -> we will use 25% of the TotalRram
+        ExecStart=/bin/bash -c 'awk \'/MemTotal/ {print 0.25*($2)}\' /proc/meminfo > /sys/block/zram1/disksize'
+        # make it swap :-) with higher prio so it will be used first
+        ExecStart=/usr/sbin/mkswap /dev/zram1 -L ZSWAP
+        ExecStart=/usr/sbin/swapon /dev/zram1 -p 10
+
+        # Disable swap -> will recover any swapped mempages to ram
+        ExecStop=/usr/sbin/swapoff /dev/zram1
+        # Reset the device so we can set new parameters (like the size)
+        ExecStop=/bin/bash -c 'echo 1 > /sys/block/zram1/reset'
+
+        [Install]
+        WantedBy=multi-user.target
+
+    alias z-nfo="sudo systemctl status zram"
+    alias z-start="sudo systemctl start zram"
+    alias z-stop="sudo systemctl stop zram"
+    **************************************************
