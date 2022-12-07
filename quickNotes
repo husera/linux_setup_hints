@@ -19,7 +19,7 @@
         # note: We use /dev/zram0 as temp device for backup only and /dev/zram1 for zswap
         ExecStart=/usr/sbin/modprobe zram num_devices=2
         # Calculate the size and set it for z-swap -> we will use 25% of the TotalRram
-        ExecStart=/bin/bash -c 'awk \'/MemTotal/ {print 0.25*($2)}\' /proc/meminfo > /sys/block/zram1/disksize'
+        ExecStart=/bin/bash -c 'awk \'/MemTotal/ {print 0.25*($2)\"k\"}\' /proc/meminfo > /sys/block/zram1/disksize'
         # make it swap :-) with higher prio so it will be used first
         ExecStart=/usr/sbin/mkswap /dev/zram1 -L ZSWAP
         ExecStart=/usr/sbin/swapon /dev/zram1 -p 10
