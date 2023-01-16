@@ -44,4 +44,24 @@ exit
 
 docker exec -it elastic-elasticsearch-1 bin/elasticsearch-setup-passwords interactive
 
-echo -n 'username:pass' | openssl base64
+AUTH=$(echo -ne "elastic:MyPassWord" | base64 --wrap 0)
+
+# Nodes (quick view)
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_security/user | jq
+# CPU Load
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,ip,node.role,uptime,cpu,load_1m,load_5m,load_15m
+# Memory check
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,ram.max,ram.current,ram.percent,heap.current,heap.percent,query_cache.memory_size,request_cache.memory_size
+# Filesystem
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,diskTotal,diskUsed,diskAvail,diskUsedPercent,fileDescriptorCurrent,fileDescriptorMax
+# Get health
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/health?v=true\&ts=false
+# List Indices
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/indices?v
+# List Shards
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/shards?v=true\&h=idx,sh,pr,state,docs,store
+# Threads
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/thread_pool?v=true\&h=id,name,active,rejected,completed
+# Stats
+curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cluster/stats | jq
