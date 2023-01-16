@@ -1,25 +1,34 @@
-docker pull docker.elastic.co/elasticsearch/elasticsearch:8.6.0
+See also:
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-dev-mode
 
-
+#### Prepare ########
 # Get the directories out:
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.6.0
 docker create --name inspect-elatic docker.elastic.co/elasticsearch/elasticsearch:8.6.0
 
 docker cp inspect-elatic:/usr/share/elasticsearch/config ./config
 docker cp inspect-elatic:/usr/share/elasticsearch/data ./data
 
-compose.yml
+
+docker pull docker.elastic.co/kibana/kibana:8.6.0
+docker create --name inspect-kibana docker.elastic.co/kibana/kibana:8.6.0
+docker cp inspect-kibana:/usr/share/kibana/config ./kibanaconfig
+docker cp inspect-kibana:/usr/share/kibana/data ./kibanadata
+
+###### Compose.yml #########
+
 version: "2.2"
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.6.0
     environment:
-      #- node.name=es01
+      - node.name=es01
       # - cluster.name=BlahBlah-cluster
       # - cluster.initial_master_nodes=es01,es02,es03
       # - discovery.seed_hosts=es02,es03
       - discovery.type=single-node
       - bootstrap.memory_lock=true
-      # - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - xpack.security.enabled=true
 
     # Increase or decrease based on the available host memory (in bytes)
     mem_limit: 2147483648
@@ -33,35 +42,50 @@ services:
       memlock:
         soft: -1
         hard: -1
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.6.0
+    volumes:
+      - ./kibanaconfig:/usr/share/kibana/config
+      - ./kibanadata:/usr/share/kibana/data
+    ports:
+      - 5601:5601
+    restart: unless-stopped
+    environment:
+      - SERVERNAME=kibana
+      - ELASTICSEARCH_HOSTS=https://127.0.0.1:9200
+        #- ELASTICSEARCH_USERNAME=kibana_system
+        #- ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+        #- ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+    mem_limit: 2147483648
 
 
+##### Hints ####################
+# Bash into container
+docker compose exec -it elasticsearch bash
+docker compose exec -it kibana bash
 
-{ docker ps | grep elastic }
-docker exec -it elastic-elasticsearch-1 bash
-./bin/elasticsearch-setup-passwords interactive
-exit
+# Set initial passwords
+docker compose exec -it elasticsearch ./bin/elasticsearch-setup-passwords interactive
 
-
-docker exec -it elastic-elasticsearch-1 bin/elasticsearch-setup-passwords interactive
-
+# Use curl to get stats about Elastic
 AUTH=$(echo -ne "elastic:MyPassWord" | base64 --wrap 0)
-
-# Nodes (quick view)
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_security/user | jq
-# CPU Load
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,ip,node.role,uptime,cpu,load_1m,load_5m,load_15m
-# Memory check
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,ram.max,ram.current,ram.percent,heap.current,heap.percent,query_cache.memory_size,request_cache.memory_size
-# Filesystem
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,diskTotal,diskUsed,diskAvail,diskUsedPercent,fileDescriptorCurrent,fileDescriptorMax
-# Get health
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/health?v=true\&ts=false
-# List Indices
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/indices?v
-# List Shards
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/shards?v=true\&h=idx,sh,pr,state,docs,store
-# Threads
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/thread_pool?v=true\&h=id,name,active,rejected,completed
-# Stats
-curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cluster/stats | jq
+    # Nodes (quick view)
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v
+    # CPU Load
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,ip,node.role,uptime,cpu,load_1m,load_5m,load_15m
+    # Memory check
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,ram.max,ram.current,ram.percent,heap.current,heap.percent,query_cache.memory_size,request_cache.memory_size
+    # Filesystem
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/nodes?v=true\&h=nodeId,name,diskTotal,diskUsed,diskAvail,diskUsedPercent,fileDescriptorCurrent,fileDescriptorMax
+    # Get health
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/health?v=true\&ts=false
+    # List Indices
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/indices?v
+    # List Shards
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/shards?v=true\&h=idx,sh,pr,state,docs,store
+    # Threads
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cat/thread_pool?v=true\&h=id,name,active,rejected,completed
+    # Users
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_security/user | jq
+    # Stats
+    curl --header "Authorization: Basic $AUTH" -k http://127.0.0.1:9200/_cluster/stats | jq
