@@ -1,0 +1,47 @@
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.6.0
+
+
+# Get the directories out:
+docker create --name inspect-elatic docker.elastic.co/elasticsearch/elasticsearch:8.6.0
+
+docker cp inspect-elatic:/usr/share/elasticsearch/config ./config
+docker cp inspect-elatic:/usr/share/elasticsearch/data ./data
+
+compose.yml
+version: "2.2"
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.0
+    environment:
+      #- node.name=es01
+      # - cluster.name=BlahBlah-cluster
+      # - cluster.initial_master_nodes=es01,es02,es03
+      # - discovery.seed_hosts=es02,es03
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      # - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+
+    # Increase or decrease based on the available host memory (in bytes)
+    mem_limit: 2147483648
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+      - ./config:/usr/share/elasticsearch/config
+    ports:
+      - 9200:9200
+    restart: unless-stopped
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+
+
+{ docker ps | grep elastic }
+docker exec -it elastic-elasticsearch-1 bash
+./bin/elasticsearch-setup-passwords interactive
+exit
+
+
+docker exec -it elastic-elasticsearch-1 bin/elasticsearch-setup-passwords interactive
+
+echo -n 'username:pass' | openssl base64
