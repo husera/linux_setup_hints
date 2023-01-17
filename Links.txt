@@ -1,1 +1,1 @@
-*
+https://github.com/che-incubator/jetbrains-editor-images
