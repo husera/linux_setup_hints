@@ -2,6 +2,7 @@
 ## Remove Packages
 ```
 sudo apt purge mariadb-common exim4
+sudo apt autoremove
 ```
 
 
