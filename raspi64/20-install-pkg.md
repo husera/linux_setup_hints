@@ -1,4 +1,10 @@
 # Setting Up my Raspberry PI 4 B+
+## Remove Packages
+```
+sudo apt purge mariadb-common exim4
+```
+
+
 ## Basic packages
 
 ### Update apt repos
