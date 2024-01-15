@@ -67,6 +67,7 @@ not needed since NM is not in use
 EOF
 ```
 ### Static ETH
+```
 sudo tee /etc/network/interfaces.d/eth0 <<EOF
 # The loopback network interface
 auto lo
