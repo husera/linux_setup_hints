@@ -58,6 +58,7 @@ alias wget='wget -c'
 alias ~='cd ~'
 alias ..='cd ..'
 alias ll='ls -lhas'
+alias l='ls -rtlha'
 alias profile='echo \"load profile ...\" ; for file in  /etc/profile.d/*.sh; do source \${file}; done'
 alias ,='echo \"load profile ...\" ; for file in  /etc/profile.d/*.sh; do source \${file}; done'
 EOF
