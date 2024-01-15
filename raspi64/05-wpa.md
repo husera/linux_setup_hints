@@ -64,5 +64,19 @@ not needed since NM is not in use
 # [connection-mac-randomization]
 # ethernet.cloned-mac-address=permanent
 # wifi.cloned-mac-address=permanent
-# EOF
+
+### Static ETH
+```
+sudo tee /etc/network/interfaces.d/eth0 <<EOF
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+ address 172.16.69.6
+ netmask 255.255.255.0
+ gateway 172.16.69.1
+ dns-nameservers 172.16.69.5 1.1.1.1
+EOF
 ```
